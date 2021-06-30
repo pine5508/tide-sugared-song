@@ -9,7 +9,7 @@ const cors = require('cors');
 
 //var configAuth = require('./config/auth');
 
-const mongodb_URI = process.env.MONGODB_URI
+const mongodb_URI = 'mongodb+srv://tjhickey:WcaLKkT3JJNiN8dX@cluster0.kgugl.mongodb.net/atlasAuthDemo?retryWrites=true&w=majority' //process.env.MONGODB_URI
 console.log(`mongodb_URI = ${mongodb_URI}`)
 
 const dbURL = mongodb_URI
@@ -32,8 +32,8 @@ const Data = require('./models/Data');
 const authRouter = require('./routes/authentication');
 const isLoggedIn = authRouter.isLoggedIn
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+//var indexRouter = require('./routes/index');
+//var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -52,8 +52,8 @@ app.use(layouts);
 app.use(authRouter)
 app.use(cors());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', (req,res)=>res.render('index'));
+//app.use('/users', usersRouter);
 
 
 app.get('/getData/:apikey',

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-var configAuth = require('../config/auth');
+//var configAuth = require('../config/auth');
 
 /*
 this is a router to handle authentication
@@ -27,7 +27,8 @@ configPassport(passport)
    store:new MongoStore({mongooseConnection: mongoose.connection})}))
    */
 
-const mongodb_URI = process.env.MONGODB_URI
+const mongodb_URI = 'mongodb+srv://tjhickey:WcaLKkT3JJNiN8dX@cluster0.kgugl.mongodb.net/atlasAuthDemo?retryWrites=true&w=majority'
+//const mongodb_URI = process.env.MONGODB_URI
 console.log(`mongodb_URI 2 = ${mongodb_URI}`)
 const dbURL = mongodb_URI
 // const dbURL = configAuth.dbURL // use this when running locally
