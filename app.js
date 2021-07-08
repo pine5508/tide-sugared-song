@@ -52,9 +52,23 @@ app.use(layouts);
 app.use(authRouter)
 app.use(cors());
 
-app.use('/', (req,res)=>res.render('index'));
+app.get('/', (req,res)=>res.render('index'));
 //app.use('/users', usersRouter);
 
+app.get('/getData',
+  async (req,res,next) => {
+    const apikey = req.params.apikey
+    const data = await Data.find({})
+    console.log('in getData')
+    console.log(data)
+    //console.dir(data)
+    if (data) {
+      res.json(data)
+    } else {
+      res.json('error: no such apikey')
+    }
+
+  })
 
 app.get('/getData/:apikey',
   async (req,res,next) => {
