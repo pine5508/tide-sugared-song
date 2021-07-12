@@ -55,6 +55,8 @@ app.use(cors());
 app.get('/', (req,res)=>res.render('index'));
 //app.use('/users', usersRouter);
 
+/* ******************* Yearbook Form Example *********************/
+
 app.get("/yearbookForm",(req,res)=>{
     res.render("yearbookForm")
 })
