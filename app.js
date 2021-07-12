@@ -27,7 +27,7 @@ db.once('open', function() {
 });
 
 const User = require('./models/User');
-const ToDoItem = require('../models/ToDoItem')
+const ToDoItem = require('./models/ToDoItem')
 
 const authRouter = require('./routes/authentication');
 const isLoggedIn = authRouter.isLoggedIn
@@ -76,9 +76,46 @@ app.post("/yearbookView",(req,res)=>{
     res.render("yearbookView")
 })
 
+/* ********************************************************/
+const Pomodoro = require('./models/Pomodoro')
+
+app.get('/pomodoros',isLoggedIn,
+  async (req,res,next) => {
+    res.locals.pomodoros = await Pomodoro.find({userId:req.user._id})
+    res.render('pomodoros')
+  }
+)
+
+app.post('/pomodoros',
+  isLoggedIn,
+  async (req,res,next) => {
+
+    const pomdata = {
+      goal:req.body.goal,
+      result:req.body.result,
+      completedAt: req.body.completedAt,
+      startedAt: req.body.startedAt,
+      userId: req.user._id,
+    }
+    const newPomodoro = new Pomodoro(pomdata)
+    await newPomodoro.save()
+
+    res.redirect('/pomodoros')
+  }
+)
+
+app.get('/pomodoros/clear',isLoggedIn,
+  async (req,res,next) => {
+    await Pomodoro.deleteMany({userId:req.user._id})
+    res.redirect('/pomodoros')
+  }
+)
+
+/* ********************************************************/
+
 
 // get the value associated to the key
-app.get('/',
+app.get('/todo',
   isLoggedIn,
   async (req, res, next) => {
       res.locals.items = await ToDoItem.find({userId:req.user._id})
@@ -100,7 +137,7 @@ app.post('/todo',
       res.redirect('/todo')
 });
 
-app.get('/remove/:itemId',
+app.get('/todo/remove/:itemId',
   isLoggedIn,
   async (req, res, next) => {
       console.log("inside /todo/remove/:itemId")
@@ -108,7 +145,7 @@ app.get('/remove/:itemId',
       res.redirect('/todo')
 });
 
-app.get('/makeComplete/:itemId',
+app.get('/todo/makeComplete/:itemId',
   isLoggedIn,
   async (req, res, next) => {
       console.log("inside /todo/makeComplete/:itemId")
@@ -120,7 +157,7 @@ app.get('/makeComplete/:itemId',
       res.redirect('/todo')
 });
 
-app.get('/switchComplete/:itemId',
+app.get('/todo/switchComplete/:itemId',
   isLoggedIn,
   async (req, res, next) => {
       console.log("inside /todo/switchComplete/:itemId")
