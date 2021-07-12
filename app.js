@@ -27,7 +27,7 @@ db.once('open', function() {
 });
 
 const User = require('./models/User');
-const Data = require('./models/Data');
+const ToDoItem = require('../models/ToDoItem')
 
 const authRouter = require('./routes/authentication');
 const isLoggedIn = authRouter.isLoggedIn
@@ -55,64 +55,86 @@ app.use(cors());
 app.get('/', (req,res)=>res.render('index'));
 //app.use('/users', usersRouter);
 
-app.get('/getData',
-  async (req,res,next) => {
-    const apikey = req.params.apikey
-    const data = await Data.find({})
-    console.log('in getData')
-    console.log(data)
-    //console.dir(data)
-    if (data) {
-      res.json(data)
-    } else {
-      res.json('error: no such apikey')
-    }
+app.get("/yearbookForm",(req,res)=>{
+    res.render("yearbookForm")
+})
 
-  })
+app.post("/yearbookView",(req,res)=>{
+    // do some calculations
+    const year=parseFloat(req.body.year)
+    const age=(2021-year)
+    const ageindays=age*365
 
-app.get('/getData/:apikey',
-  async (req,res,next) => {
-    const apikey = req.params.apikey
-    const data = await Data.findOne({apikey:apikey})
-    console.log('in getData')
-    console.log(data)
-    //console.dir(data)
-    if (data) {
-      res.json(data.data)
-    } else {
-      res.json('error: no such apikey')
-    }
+    // pass data into the EJS page for rendering
+    res.locals.name=req.body.name
+    res.locals.img=req.body.img
+    res.locals.year = year
+    res.locals.age = age
+    res.locals.ageindays= ageindays
+    res.locals.url=req.body.url
+    res.locals.quote=req.body.quote
+    res.render("yearbookView")
+})
 
-  })
 
-  app.get('/storeData/:apikey/:data',
-    async (req,res,next) => {
-      const apikey = req.params.apikey
-      const data = req.params.data
-      const newData = new Data({
-        data:data,
-        apikey:apikey
-      })
-      console.log('storing data='+data)
-      await Data.deleteMany({apikey:apikey})
-      await newData.save()
-      res.json("done")
+// get the value associated to the key
+app.get('/',
+  isLoggedIn,
+  async (req, res, next) => {
+      res.locals.items = await ToDoItem.find({userId:req.user._id})
+      res.render('toDoList');
+});
 
-    })
+/* add the value in the body to the list associated to the key */
+app.post('/todo',
+  isLoggedIn,
+  async (req, res, next) => {
+      const todo = new ToDoItem(
+        {item:req.body.item,
+         createdAt: new Date(),
+         completed: false,
+         userId: req.user._id
+        })
+      await todo.save();
+      //res.render("todoVerification")
+      res.redirect('/todo')
+});
 
-  app.post('/storeData',
-    async (req,res,next) => {
-      const apikey = req.body.apikey
-      const data = req.body.data
-      const newData = new Data({
-        data:data,
-        apikey:apikey
-      })
-      await Data.deleteMany({apikey:apikey})
-      await newData.save()
-      res.json("done")
+app.get('/remove/:itemId',
+  isLoggedIn,
+  async (req, res, next) => {
+      console.log("inside /todo/remove/:itemId")
+      await ToDoItem.remove({_id:req.params.itemId});
+      res.redirect('/todo')
+});
 
-    })
+app.get('/makeComplete/:itemId',
+  isLoggedIn,
+  async (req, res, next) => {
+      console.log("inside /todo/makeComplete/:itemId")
+      const todo = await ToDoItem.findOne({_id:req.params.itemId});
+      todo.completed = true;
+      await todo.save()
+      //res.locals.todo = todo
+      //res.render('completionConfirm')
+      res.redirect('/todo')
+});
+
+app.get('/switchComplete/:itemId',
+  isLoggedIn,
+  async (req, res, next) => {
+      console.log("inside /todo/switchComplete/:itemId")
+      const todo = await ToDoItem.findOne({_id:req.params.itemId});
+      todo.completed = !todo.completed;
+      await todo.save()
+      //res.locals.todo = todo
+      //res.render('completionConfirm')
+      res.redirect('/todo')
+});
+
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
