@@ -48,11 +48,13 @@ app.use(layouts);
 app.use(authRouter)
 app.use(cors());
 
-/* ******************* Route for the main page *********************/
+/* ******************* Route for the main pages *********************/
 
 
 app.get('/', (req,res)=>res.render('index'));
-//app.use('/users', usersRouter);
+
+app.get('/about', (req,res)=>res.render('about'));
+
 
 /* ******************* HTML Form Example *********************/
 
