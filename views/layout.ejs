@@ -9,30 +9,32 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>MAD - Minimal Authentication Demo</title>
+    <title>  Team 4  </title>
   </head>
   <body>
     <div class="container-fluid">
 
       <ul class="nav nav-pills">
           <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href= "/about">About Us!</a>
           
         
         <% if (!loggedIn) {%>
+        
           <a class="nav-link" href="/formdemo">FormDemo</a>
           <a class="nav-link" href="/yearbookForm">Yearbook</a>
           <a class="nav-link" href="/recipe/milk">Recipes</a>
-          <a class="nav-link" href= "/about">About Us!</a>
           <a class="nav-link" href="/auth/google">Login</a>
               
         <% } else  { %>
+        
           <a class="nav-link" href="/pomodoros">Pomodoros</a>
           <a class="nav-link" href="/profile">See your profile </a>
           <a class="nav-link" href="/profiles">See everyone's profile</a>
           <a class="nav-link" href="/todo">ToDoList</a>
           <a class="nav-link" href="/logout">Logout</a>
           <a class="nav-link" href="/"><%= user.googleemail %></a>
-          <a class ="nav-link" href= "/about">About Us!</a>
+        
           <% } %>
       </ul>
 
