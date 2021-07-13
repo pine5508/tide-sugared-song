@@ -65,12 +65,13 @@ app.get('/bio/alan', (req,res)=>res.render("bioAlan"));
 
 app.get('/bio/sasha', (req,res)=>res.render("biosasha"));
 
-app.get('/map', (req,res)=>res.render("recycleMap"));
+app.get('/bio/gerardo',(req,res)=>res.render("bioGerardo"))
+
 
 /* ******************* HTML Form Example *********************/
 
-app.get("/formdemo",(req,res) => {
-  res.render("formdemo")
+app.get("/locationForm",(req,res) => {
+  res.render("addlocationform")
 })
 
 app.post("/showformdataJSON",(req,res) => {
