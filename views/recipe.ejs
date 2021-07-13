@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <h1>
+    Recipes for <%= data.strMeal %> 
+  </h1>
+  <p>
+    from <a href="https://www.themealdb.com">www.themealdb.com</a>
+  </p>
+</div>
+
+<pre><%= JSON.stringify(data,null,5) %> </pre>
+
+<% Object.keys(data).map((key) => {%>
+<%= key %>: <%= data[key] %> <hr>
+ 
+
+<%})%>

@@ -131,14 +131,16 @@ app.get("/recipeById/:mealId",
   async (req,res,next) => {
     try {
       const mealId = req.params.mealId
-      //const url = "https://www.themealdb.com/api/json/v1/1/filter.php?i="+req.params.ingredient
-      const url = "https://www.themealdb.com/api/json/v1/1/search.php?i="+mealId
-      //http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3"
+      const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + mealId
+      //"https://www.themealdb.com/api/json/v1/1/search.php?i="+mealId
+   
 
       let results = await axios.get(url)
-      res.locals.data = results.data|| []
+      
+      res.locals.data = results.data.meals[0] || []
       res.locals.ingredient = req.params.ingredient
-      res.json(res.locals.data)
+      //res.json(res.locals.data)
+      res.render('recipe')
     } catch(error){
       next(error)
     }
