@@ -6,6 +6,7 @@ var logger = require('morgan');
 const mongoose = require( 'mongoose' );
 const layouts = require("express-ejs-layouts");
 const cors = require('cors');
+const axios = require('axios');
 
 //var configAuth = require('./config/auth');
 
@@ -93,7 +94,58 @@ app.post("/yearbookView",(req,res)=>{
     res.render("yearbookView")
 })
 
-/* ********************************************************/
+/* ********************** RECIPE API interactions ************/
+
+// this shows how to use an API to get recipes
+// http://www.recipepuppy.com/about/api/
+// the example here finds omelet recipes with onions and garlic
+app.get("/recipe/json/:ingredient",
+  async (req,res,next) => {
+    try {
+      const url = "https://www.themealdb.com/api/json/v1/1/filter.php?i="+req.params.ingredient
+      //const url = "https://www.themealdb.com/api/json/v1/1/search.php?i="+meal //http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3"
+      const results = await axios.get(url)
+      res.json(results.data)
+    } catch(error){
+      next(error)
+    }
+})
+
+// this gets the data from the API and then rendeers it in an ejs page
+app.get("/recipe/:ingredient",
+  async (req,res,next) => {
+    try {
+      const url = "https://www.themealdb.com/api/json/v1/1/filter.php?i="+req.params.ingredient
+      //const url = "https://www.themealdb.com/api/json/v1/1/search.php?i="+meal //http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3"
+      
+      let results = await axios.get(url)
+      res.locals.meals = results.data.meals || []
+      res.locals.ingredient = req.params.ingredient
+      res.render('recipes')
+    } catch(error){
+      next(error)
+    }
+})
+
+app.get("/recipeById/:mealId", 
+  async (req,res,next) => {
+    try {
+      const mealId = req.params.mealId
+      //const url = "https://www.themealdb.com/api/json/v1/1/filter.php?i="+req.params.ingredient
+      const url = "https://www.themealdb.com/api/json/v1/1/search.php?i="+mealId
+      //http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3"
+
+      let results = await axios.get(url)
+      res.locals.data = results.data|| []
+      res.locals.ingredient = req.params.ingredient
+      res.json(res.locals.data)
+    } catch(error){
+      next(error)
+    }
+}
+ )     
+
+/* ******************* Pomodoros *************/
 const Pomodoro = require('./models/Pomodoro')
 
 app.get('/pomodoros',isLoggedIn,
