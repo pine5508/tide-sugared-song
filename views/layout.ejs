@@ -13,34 +13,33 @@
   </head>
   <body>
     <div class="container-fluid">
-
       <ul class="nav nav-pills">
-          <a class="nav-link" href="/">Home</a>
-          <a class = "nav-link" href = "/locationForm"> Add a location</a>
-          <a class="nav-link" href= "/about">About</a>
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href ="/locationForm"> Suggest a location</a>
+        <a class="nav-link" href="/about">About</a>
 
           
         
         <% if (!loggedIn) {%>
         
-<!--           <a class="nav-link" href="/formdemo">FormDemo</a>
-          <a class="nav-link" href="/yearbookForm">Yearbook</a>
-          <a class="nav-link" href="/recipe/milk">Recipes</a>
+<!--    <a class="nav-link" href="/formdemo">FormDemo</a>
+        <a class="nav-link" href="/yearbookForm">Yearbook</a>
+        <a class="nav-link" href="/recipe/milk">Recipes</a>
 -->
-          <a class="nav-link" href="/auth/google">Login</a>
+        <a class="nav-link" href="/auth/google">Login</a>
   
         <% } else  { %>
         
 <!-- 
-          <a class="nav-link" href="/pomodoros">Pomodoros</a>
-          <a class="nav-link" href="/profiles">See everyone's profile</a>
-          <a class="nav-link" href="/todo">ToDoList</a>
-          <a class="nav-link" href="/profile">See your profile </a>
+        <a class="nav-link" href="/pomodoros">Pomodoros</a>
+        <a class="nav-link" href="/profiles">See everyone's profile</a>
+        <a class="nav-link" href="/todo">ToDoList</a>
+        <a class="nav-link" href="/profile">See your profile </a>
 -->
-          <a class="nav-link" href="/logout">Logout</a>
-          <a class="nav-link" href="/"><%= user.googleemail %></a>
+        <a class="nav-link" href="/logout">Logout</a>
+        <a class="nav-link" href="/"><%= user.googleemail %></a>
         
-          <% } %>
+        <% } %>
       </ul>
 
     	<%- body %>
