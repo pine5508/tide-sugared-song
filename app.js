@@ -59,7 +59,7 @@ app.get('/bio/rahma', (req,res)=>res.render('bioRahma'));
 
 app.get('/bio/rohan', (req,res)=>res.render('bioRohan'));
 
-app.get('/bio/jon', (req,res)=>res.render('jonbio'));
+app.get('/bio/jon', (req,res)=>res.render('bioJon'));
 
 app.get('/bio/alan', (req,res)=>res.render("bioAlan"));
 
