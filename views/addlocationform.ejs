@@ -2,7 +2,8 @@
   Suggest a New Location
 </h1>
 
-<form method="post" action="/showformdataJSON">
+<div class=".container-sm">
+  <form  method="post" action="/showformdataJSON">
   
   <div class="mb-3">
     <label for="Address Line 1" class="form-label">Address Line 1</label>
@@ -23,16 +24,21 @@
     <button class="btn btn-secondary dropdown-toggle" type="button" id="state" data-bs-toggle="dropdown">
       State
     </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">VT</a></li>
-    <li><a class="dropdown-item" href="#">MA</a></li>
-    <li><a class="dropdown-item" href="#">NY</a></li>
-  </ul>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">VT</a></li>
+      <li><a class="dropdown-item" href="#">MA</a></li>
+      <li><a class="dropdown-item" href="#">NY</a></li>
+    </ul>
+    
+  <button type="submit" class="btn btn-primary">Submit</button>
+    
+  </div>
+
+  </form>
 </div>
 
-</form>
   
-<form method="post" action="/showformdataJSON" class="bg-info">
+<!--<form method="post" action="/showformdataJSON" class="bg-info">
   Enter the city of your location:
 
   <input type="text" 
@@ -54,4 +60,4 @@
 
 <hr>
 
-
+-->
