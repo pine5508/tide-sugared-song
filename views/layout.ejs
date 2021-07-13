@@ -16,9 +16,11 @@
 
       <ul class="nav nav-pills">
           <a class="nav-link" href="/">Home</a>
-          <a class="nav-link" href="/yearbookForm">Yearbook</a>
+          
         
         <% if (!loggedIn) {%>
+          <a class="nav-link" href="/formdemo">FormDemo</a>
+          <a class="nav-link" href="/yearbookForm">Yearbook</a>
           <a class="nav-link" href="/auth/google">Login</a>
         
         <% } else  { %>
