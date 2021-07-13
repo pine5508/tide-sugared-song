@@ -152,14 +152,19 @@ const Pomodoro = require('./models/Pomodoro')
 
 app.get('/pomodoros',isLoggedIn,
   async (req,res,next) => {
+   try{
     res.locals.pomodoros = await Pomodoro.find({userId:req.user._id})
     res.render('pomodoros')
+   } catch(e) {
+     next(e)
+   }
   }
 )
 
 app.post('/pomodoros',
   isLoggedIn,
   async (req,res,next) => {
+   try {
 
     const pomdata = {
       goal:req.body.goal,
@@ -172,13 +177,21 @@ app.post('/pomodoros',
     await newPomodoro.save()
 
     res.redirect('/pomodoros')
+   } catch(e){
+     console.log("Error in pomodoros"+e)
+     next(e)
+   }
   }
 )
 
 app.get('/pomodoros/clear',isLoggedIn,
   async (req,res,next) => {
+   try {
     await Pomodoro.deleteMany({userId:req.user._id})
     res.redirect('/pomodoros')
+   } catch(e) {
+     next(e)
+   }
   }
 )
 
@@ -246,14 +259,19 @@ app.post('/editProfile',
 app.get('/todo',
   isLoggedIn,
   async (req, res, next) => {
+    try {
       res.locals.items = await ToDoItem.find({userId:req.user._id})
       res.render('toDoList');
+    } catch(e) {
+      next(e)
+    }
 });
 
 /* add the value in the body to the list associated to the key */
 app.post('/todo',
   isLoggedIn,
   async (req, res, next) => {
+    try {
       const todo = new ToDoItem(
         {item:req.body.item,
          createdAt: new Date(),
@@ -263,6 +281,9 @@ app.post('/todo',
       await todo.save();
       //res.render("todoVerification")
       res.redirect('/todo')
+    } catch(e) {
+      next(e)
+    }
 });
 
 app.get('/todo/remove/:itemId',

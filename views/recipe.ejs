@@ -7,10 +7,26 @@
   </p>
 </div>
 
-<pre><%= JSON.stringify(data,null,5) %> </pre>
+Instructions:<br>
+<%= data.strInstructions %>
+
+<hr>
+<img src="<%= data.strMealThumb %>" size = "50%">
+
+
+<h1>
+   Here are the keys and their values
+</h1>
+Use <pre>data.KEY</pre> to get the value for the key.
+<hr>
 
 <% Object.keys(data).map((key) => {%>
-<%= key %>: <%= data[key] %> <hr>
- 
-
+    <%= key %>: <%= data[key] %> <hr>
 <%})%>
+
+<hr>
+<h1>
+  Here is the JSON object returned by the website
+</h1>
+
+<pre><%= JSON.stringify(data,null,5) %> </pre>
