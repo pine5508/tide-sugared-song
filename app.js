@@ -65,6 +65,8 @@ app.get('/bio/alan', (req,res)=>res.render("bioAlan"));
 
 app.get('/bio/sasha', (req,res)=>res.render("biosasha"));
 
+app.get('/map', (req,res)=>res.render("recycleMap"));
+
 /* ******************* HTML Form Example *********************/
 
 app.get("/formdemo",(req,res) => {
