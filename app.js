@@ -57,6 +57,21 @@ app.get('/', (req,res)=>res.render('index'));
 
 /* ******************* Yearbook Form Example *********************/
 
+app.get("/formdemo",(req,res) => {
+  res.render("formdemo")
+})
+
+app.post("/showformdataJSON",(req,res) => {
+  res.json(req.body)
+})
+
+app.post("/showformdata",(req,res) => {
+  res.locals.body = req.body
+  res.render('showformdata')
+})
+
+/* ******************* Yearbook Form Example *********************/
+
 app.get("/yearbookForm",(req,res)=>{
     res.render("yearbookForm")
 })
