@@ -8,18 +8,12 @@ const layouts = require("express-ejs-layouts");
 const cors = require('cors');
 const axios = require('axios');
 
-//var configAuth = require('./config/auth');
+
+// here is where we connect to the database
 
 const mongodb_URI = 'mongodb+srv://tjhickey:WcaLKkT3JJNiN8dX@cluster0.kgugl.mongodb.net/atlasAuthDemo?retryWrites=true&w=majority' //process.env.MONGODB_URI
-console.log(`mongodb_URI = ${mongodb_URI}`)
-
 const dbURL = mongodb_URI
-// const dbURL = configAuth.dbURL
 mongoose.connect(dbURL,{ useUnifiedTopology: true })
-
-//mongoose.connect( 'mongodb://localhost/authDemo');
-
-
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -27,19 +21,20 @@ db.once('open', function() {
   console.log("we are connected!!!")
 });
 
+// here are a couple of database models we use below
 const User = require('./models/User');
 const ToDoItem = require('./models/ToDoItem')
 
 const authRouter = require('./routes/authentication');
 const isLoggedIn = authRouter.isLoggedIn
 
-//var indexRouter = require('./routes/index');
-//var usersRouter = require('./routes/users');
 
-var app = express();
+var app = express();  // this is the express server itself!
 
 
-
+/* the next 10 lines set up the server
+   so it can handle authentication and other features
+*/
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -53,10 +48,13 @@ app.use(layouts);
 app.use(authRouter)
 app.use(cors());
 
+/* ******************* Route for the main page *********************/
+
+
 app.get('/', (req,res)=>res.render('index'));
 //app.use('/users', usersRouter);
 
-/* ******************* Yearbook Form Example *********************/
+/* ******************* HTML Form Example *********************/
 
 app.get("/formdemo",(req,res) => {
   res.render("formdemo")
@@ -195,7 +193,7 @@ app.get('/pomodoros/clear',isLoggedIn,
   }
 )
 
-/* ********************************************************/
+/* *************** User Profiles ****************/
 
 
 app.get('/profiles',
@@ -279,7 +277,6 @@ app.post('/todo',
          userId: req.user._id
         })
       await todo.save();
-      //res.render("todoVerification")
       res.redirect('/todo')
     } catch(e) {
       next(e)
@@ -289,33 +286,28 @@ app.post('/todo',
 app.get('/todo/remove/:itemId',
   isLoggedIn,
   async (req, res, next) => {
+    try {
       console.log("inside /todo/remove/:itemId")
       await ToDoItem.remove({_id:req.params.itemId});
       res.redirect('/todo')
+    } catch(e) {
+      next(e)
+    }
 });
 
-app.get('/todo/makeComplete/:itemId',
-  isLoggedIn,
-  async (req, res, next) => {
-      console.log("inside /todo/makeComplete/:itemId")
-      const todo = await ToDoItem.findOne({_id:req.params.itemId});
-      todo.completed = true;
-      await todo.save()
-      //res.locals.todo = todo
-      //res.render('completionConfirm')
-      res.redirect('/todo')
-});
 
 app.get('/todo/switchComplete/:itemId',
   isLoggedIn,
   async (req, res, next) => {
+    try {
       console.log("inside /todo/switchComplete/:itemId")
       const todo = await ToDoItem.findOne({_id:req.params.itemId});
       todo.completed = !todo.completed;
       await todo.save()
-      //res.locals.todo = todo
-      //res.render('completionConfirm')
       res.redirect('/todo')
+    } catch(e) {
+      next(e)
+    }
 });
 
 
