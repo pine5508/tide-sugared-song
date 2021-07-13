@@ -55,10 +55,15 @@ app.get('/', (req,res)=>res.render('index'));
 
 app.get('/about', (req,res)=>res.render('about'));
 
-app.get('/rohan', (req,res)=>res.render('rohanbio'));
+app.get('/bio/rahma'), (req,res)=>res.render('bioRahma'))
 
-app.get('/jon', (req,res)=>res.render('jonbio'));
+app.get('/bio/rohan', (req,res)=>res.render('bioRohan'));
 
+app.get('/bio/jon', (req,res)=>res.render('jonbio'));
+
+app.get('/bio/alan', (req,res)=>res.render("bioAlan"));
+
+app.get('/bio/sasha', (req,res)=>res.render("biosasha"));
 
 /* ******************* HTML Form Example *********************/
 
