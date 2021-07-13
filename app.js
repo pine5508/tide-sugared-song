@@ -55,6 +55,10 @@ app.get('/', (req,res)=>res.render('index'));
 
 app.get('/about', (req,res)=>res.render('about'));
 
+app.get('/rohan', (req,res)=>res.render('rohanbio'));
+
+app.get('/jon', (req,res)=>res.render('jonbio'));
+
 
 /* ******************* HTML Form Example *********************/
 
