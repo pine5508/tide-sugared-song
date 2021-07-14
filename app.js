@@ -66,7 +66,7 @@ app.get('/bio/alan', (req,res)=>res.render("bioAlan"));
 
 app.get('/bio/sasha', (req,res)=>res.render("biosasha"));
 
-app.get('/bio/gerardo',(req,res)=>res.render("bioGerardo"))
+app.get('/bio/gerardo', (req,res)=>res.render("bioGerardo"))
 
 
 /* ******************* HTML Form Example *********************/
