@@ -66,7 +66,6 @@ app.get('/bio/jon', (req,res)=>res.render('bioJon'));
 
 app.get('/bio/alan', (req,res)=>res.render("bioAlan"));
 
-
 app.get('/bio/sasha', (req,res)=>res.render("biosasha"));
 
 app.get('/bio/gerardo', (req,res)=>res.render("bioGerardo"))
@@ -85,6 +84,11 @@ app.post("/showformdataJSON",(req,res) => {
 app.post("/showformdata",(req,res) => {
   res.locals.body = req.body
   res.render('showformdata')
+})
+
+app.post('/jonMadlib',(req,res) => {
+  res.locals.body = req.body
+  res.render('madlibJon')
 })
 
 /* ******************* Yearbook Form Example *********************/
