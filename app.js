@@ -11,7 +11,7 @@ const axios = require('axios');
 
 // here is where we connect to the database
 
-//const mongodb_URI = 'mongodb+srv://tjhickey:LTsmcRCGW3%40c99b@cluster0.8gabi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+//const mongodb_URI = 'mongodb+srv://tjhickey:LTsmcRCGW3c99b@cluster0.8gabi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 const mongodb_URI =   'mongodb+srv://tjhickey:WcaLKkT3JJNiN8dX@cluster0.kgugl.mongodb.net/atlasAuthDemo?retryWrites=true&w=majority' //process.env.MONGODB_URI
 const dbURL = mongodb_URI
 mongoose.connect(dbURL,{ useUnifiedTopology: true })
