@@ -2,67 +2,32 @@
   Suggest a New Location
 </h1>
 
-<div class=".container-sm">
-  <form  method="post" action="/showformdataJSON">
-  
-  <div class="mb-3">
-    <label for="Address Line 1" class="form-label">Address Line 1</label>
-    <input type="text" class="form-control" id="AddLine1" placeholder="Required">
+
+<form class="row g-3" method="post" action="/showformdataJSON">
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
   </div>
-
-  <div class="mb-3">
-    <label for="Address Line 2" class="form-label">Address Line 2</label>
-    <input type="text" class="form-control" id="AddLine2">
+  <div class="col-12">
+    <label for="inputAddress2" class="form-label">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
   </div>
-
-  <div class="mb-3">
-    <label for="City" class="form-label">City</label>
-    <input type="text" class="form-control" id="city" placeholder="Required">
+  <div class="col-md-6">
+    <label for="inputCity" class="form-label">City</label>
+    <input type="text" class="form-control" id="inputCity">
   </div>
-    
-  <div class="mb-3">
-    <label for="Zip" class="form-label">Zip Code</label>
-    <input type="int" class="form-control" id="zip" placeholder="Required">
+  <div class="col-md-4">
+    <label for="inputState" class="form-label">State</label>
+    <select id="inputState" class="form-select">
+      <option selected>Choose...</option>
+      <option>...</option>
+    </select>
   </div>
-  
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="state" data-bs-toggle="dropdown">
-      State
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">VT</a></li>
-      <li><a class="dropdown-item" href="#">MA</a></li>
-      <li><a class="dropdown-item" href="#">NY</a></li>
-    </ul>
-    
-  <button type="submit" class="btn btn-primary">Submit</button>
-    
+  <div class="col-md-2">
+    <label for="inputZip" class="form-label">Zip</label>
+    <input type="text" class="form-control" id="inputZip">
   </div>
-
-  </form>
-</div>
-
-  
-<!--<form method="post" action="/showformdataJSON" class="bg-info">
-  Enter the city of your location:
-
-  <input type="text" 
-         name="City" 
-         placeholder="City Name">
-<hr>
-    What is the zip code of your location?
-  
-  <input type="number" 
-         name="zipcode"
-         placeholder="Zip Code">
-<hr> 
-  Enter the address of your location:
-  <input type="text" name="address" placeholder="Address">
-
-
-<input type="submit" value="Enter">
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
 </form>
-
-<hr>
-
--->
