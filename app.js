@@ -90,6 +90,33 @@ app.post('/jonMadlib',(req,res) => {
   res.locals.body = req.body
   res.render('madlibJon')
 })
+app.post('/GerardoMadlib',(req,res) => {
+  res.locals.body = req.body
+  res.render('madlibGerardo')
+})
+app.post('/RahmaMadlib',
+         isLoggedIn,
+         (req,res) => {
+  res.locals.body = req.body
+  res.render('madlibRahma')
+})
+
+app.post('/rohanMadLib',(req,res) => {
+  res.locals.body = req.body
+  res.render('madLibRohan')
+})
+
+app.post('/jonMadlib',(req,res) => {
+  res.locals.body = req.body
+  res.render('madlibJon')
+})
+
+app.post('/sashaMadlib',
+         isLoggedIn,
+         (req,res) => {
+  res.locals.body = req.body
+  res.render('madlibSasha')
+})
 
 /* ******************* Yearbook Form Example *********************/
 

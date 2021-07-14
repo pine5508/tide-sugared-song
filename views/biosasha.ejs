@@ -6,7 +6,7 @@
 
 <div class="col"
      </div>
-<form method="post" action="/timMadLib">
+<form method="post" action="/sashaMadLib">
   <input type="text" name="noun1" placeholder = "noun"><br>
   <input type="text" name="noun2" placeholder = "noun"><br>
   <input type="text" name="noun3" placeholder = "noun"><br>
@@ -16,3 +16,33 @@
   <input type="text" name="tverb1" placeholder = "past tense transitive verb"><br>
   <input type="submit" class="btn btn-lg btn-danger">
 </form>
+<style>
+  i {color:red}
+</style>
+<div class="jumbotron">
+  <h1>
+    The story of the <i><%= body.adj1 %> <%= body.noun1 %></i>
+  </h1>
+  <p>
+     a madlib by Tim Hickey filled out by <%= user.googlename %>
+  </p>
+</div>
+
+Once upon a time there was a 
+<i><%= body.adj1 %> <%= body.noun1 %></i>
+whose best friend was a 
+<i><%= body.noun2 %>.</i> 
+They went into a store
+and bought some 
+<i><%= body.adj2 %> <%= body.nouns1 %></i>. 
+They bought a 
+<i><%= body.noun3 %></i> 
+and then the 
+<i><%= body.noun1 %> <%= body.adv1 %> <%= body.tverb1 %> </i>
+the 
+<i><%= body.noun3 %></i>
+and the
+<i><%= body.noun1 %></i> 
+and the
+<i><%= body.noun2 %> </i>
+left the store.
