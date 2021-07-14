@@ -103,9 +103,9 @@ app.post('/RahmaMadlib',
   res.render('madlibRahma')
 })
 
-app.post('/rohanMadLib',(req,res) => {
+app.post('/rohanMadLib', isLoggedIn, (req,res) => {
   res.locals.body = req.body
-  res.render('madLibRohan')
+  res.render('madibRohan')
 })
 
 app.post('/jonMadlib', isLoggedIn, (req,res) => {
