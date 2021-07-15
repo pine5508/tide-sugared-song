@@ -238,7 +238,7 @@ app.post('/addCommentForAlan',
     }
 })
 
-const CommentForSasha = require('./models/CommentForSasha')  // this is the schema for CommentsForTim
+const CommentForSasha = require('./models/CommentForSasha')  // this is the schema for CommentsForSasha
 
 //app.get('/bio/Tim', (req,res)=>res.render('bioTim'));
 

@@ -80,7 +80,7 @@ email: rohankelkar@brandeis.edu
 <ul>
   <!-- here is how we iterate over all comments in the database! -->
   
-<% comments.forEach(comment => { %> 
+  <% comments.forEach(comment => { %> 
    
     <li> 
          <%= comment.title %> <i> <%= comment.createdAt %></i>
@@ -89,6 +89,7 @@ email: rohankelkar@brandeis.edu
       <br>
           Rating: <%= comment.rating %>
    </li>
+  
   <% }) %>
   
 </ul>
