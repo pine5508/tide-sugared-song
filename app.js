@@ -58,7 +58,49 @@ app.get('/', (req,res)=>res.render('index'));
 
 app.get('/about', (req,res)=>res.render('about'));
 
-app.get('/bio/rahma', (req,res)=>res.render('bioRahma'));
+const CommentForRahma = require('./models/CommentForRahma')  // this is the schema for CommentsForTim
+
+//app.get('/bio/Tim', (req,res)=>res.render('bioTim'));
+
+//we have to find all of the most recent comments to show them on the bio page
+app.get('/bio/Rahma', 
+  async (req,res,next) => {
+    try {
+      res.locals.comments = 
+        await CommentForRahma
+                 .find({}) // get all the comments
+                 .sort({createdAt:-1})  // sort by creation date descending, most recent first
+                 .limit(10) // show only the last 10 comments
+      res.render('bioRahma')
+    } catch(error){
+      next(error)
+    }
+})
+
+
+// here is where we get a comment (title, text, user) and add it to a collection in the database
+app.post('/addCommentForRahma', 
+         isLoggedIn,
+  async (req,res,next) => {
+    try {
+      
+      const comment = 
+        new CommentForRahma({
+              title:req.body.title,
+              text:req.body.text,
+              createdAt: new Date(),
+              userId: req.user._id,      // they have to be logged in to leave a comment
+            })
+    
+      await comment.save()
+
+      res.redirect('/bio/Rahma')
+      
+    } catch(error){
+      next(error)
+    }
+})
+
 
 app.get('/bio/rohan', (req,res)=>res.render('bioRohan'));
 
@@ -170,7 +212,7 @@ app.post('/alanMadlib',
 
 /**************** Comments on Rohan's Bio **************************/
 
-const commentForRohan = require('./models/commentForRohan')  // this is the schema for commentsForRohan
+const commentForRohan = require('./models/CommentForRohan')  // this is the schema for commentsForRohan
 
 //app.get('/bio/Rohan', (req,res)=>res.render('bioRohan'));
 
@@ -191,7 +233,7 @@ app.get('/bio/Rohan',
 
 
 // here is where we get a comment (title, text, user) and add it to a collection in the database
-app.post('/addcommentForRohan', isLoggedIn,
+app.post('/addCommentForRohan', isLoggedIn,
   async (req,res,next) => {
     try {
       

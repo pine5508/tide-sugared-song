@@ -82,4 +82,61 @@ of the codes, try modify them and nd understand what they means:) -->
   <input type="submit" class="btn btn-lg btn-danger">
 </form>
                                        
-                                     
+   <h2>
+  Please leave a comment
+</h2>
+
+<hr>
+<% if (!loggedIn) {%>
+
+   <b> You must be logged in to leave a comment! </b>
+
+<%} else {%> 
+
+  <form method="post" action="/addCommentForAlan">
+    Title: 
+    <input type="text" name="title" size="40" placeholder="summarize in a few words"><br>
+    More details (optional)<br>
+    <input type="number" name="rating" placeholder="rating from 1-10">
+    <textarea name="text" cols="40" placeholder="what do you think of my bio page?"></textarea><br>
+    <input type="submit" class="btn btn-warning" value="Submit comment">
+  </form>
+
+<%}%>
+
+
+<h2>
+  Comments from previous visitors
+</h2>
+
+  
+<!-- here is where we show all of the comments in a list -->
+<ul>
+  <!-- here is how we iterate over all comments in the database! -->
+  
+  <% comments.forEach(comment => { %> 
+   
+    <li> 
+         <%= comment.title %> <i> <%= comment.createdAt %></i>
+         <br>
+         <%= comment.text %>
+   </li>
+  
+  <% }) %>
+  
+</ul>
+
+<div style="color:red">
+
+    <h6>
+      The rest of this page is just for the developers!<br>
+      Everyone else can ignore this!
+    </h6>
+
+    Here are the comments in raw JSON form:
+    <pre>
+    <%= JSON.stringify(comments,null,5) %>
+    </pre>
+    <!-- the <pre> tag preserves the spacing and JSON.stringify makes it look pretty -->
+
+</div>                                  

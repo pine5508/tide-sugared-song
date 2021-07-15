@@ -5,6 +5,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 var commentSchema = Schema( {
   title:String,
+  Rating: String, 
   text:String,
   createdAt: Date,  // when they left the comment
   userId: ObjectId,   // who left the comment

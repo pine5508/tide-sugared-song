@@ -44,9 +44,22 @@
   </div>
   <div class="col">
     <h2>Comment</h2>
-    <input type="text" class="form-control" id="title" placeholder="Title">
-    <textarea class="form-control" id="comment" rows="2" placeholder="Leave a comment..."></textarea>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <form method="post" action="/addCommentForJon">
+      <div class="row mb-3">
+        <div class="col">
+          <input type="text" class="form-control" id="title" placeholder="Title">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" id="rating" placeholder="Rate">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <textarea class="form-control" id="comment" rows="2" placeholder="Leave a comment..."></textarea>
+      </div>
+      <div class=""
+      <button type="submit" class="btn btn-primary mb-3">Submit</button>
+    </form>
+    
   </div>
 </div>
 
