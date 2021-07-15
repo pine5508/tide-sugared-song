@@ -3,7 +3,7 @@
 </h1>
 
 
-<form class="row g-3" method="post" action="/addLocationJSON">
+<form class="row g-3" method="post" action="/addLocation">
   <div class="col-10">
     <label for="namePlace" class="form-label">Name this place</label>
     <input type="text" class="form-control" id="namePlace" name="namePlace">
@@ -51,5 +51,20 @@
 </form>
 
 <hr>
+
+<ul>
+  <!-- here is how we iterate over all locations in the database! -->
+  
+  <% locations.forEach(location => { %> 
+   
+    <li> 
+         <%= location.namePlace %> <i> <%= location.createdAt %></i>
+         <br>
+         <%= location.city %>
+   </li>
+  
+  <% }) %>
+  
+</ul>
 
 <pre><%= JSON.stringify(locations,null,5) %></pre>
