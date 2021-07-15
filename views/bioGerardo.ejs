@@ -93,7 +93,7 @@ of the codes, try modify them and nd understand what they means:) -->
 
 <%} else {%> 
 
-  <form method="post" action="/addCommentForAlan">
+  <form method="post" action="/addCommentForGerardo">
     Title: 
     <input type="text" name="title" size="40" placeholder="summarize in a few words"><br>
     More details (optional)<br>
@@ -120,6 +120,7 @@ of the codes, try modify them and nd understand what they means:) -->
          <%= comment.title %> <i> <%= comment.createdAt %></i>
          <br>
          <%= comment.text %>
+         <%= comment. rating %>
    </li>
   
   <% }) %>

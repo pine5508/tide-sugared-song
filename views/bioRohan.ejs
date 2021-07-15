@@ -62,6 +62,8 @@ email: rohankelkar@brandeis.edu
     Title: 
     <input type="text" name="title" size="40" placeholder="summarize in a few words"><br>
     More details (optional)<br>
+    <imput type="number" name="rating" placholder="rating from 1-10"></imput>
+    <br>
     <textarea name="text" cols="40" placeholder="what do you think of my bio page?"></textarea><br>
     <input type="submit" class="btn btn-warning" value="Submit comment">
   </form>
@@ -78,14 +80,30 @@ email: rohankelkar@brandeis.edu
 <ul>
   <!-- here is how we iterate over all comments in the database! -->
   
-  <% comments.forEach(comment => { %> 
+<% comments.forEach(comment => { %> 
    
     <li> 
          <%= comment.title %> <i> <%= comment.createdAt %></i>
          <br>
          <%= comment.text %>
+      <br>
+          Rating: <%= comment.rating %>
    </li>
-  
   <% }) %>
   
 </ul>
+
+<div style="color:red">
+
+    <h6>
+      The rest of this page is just for the developers!<br>
+      Everyone else can ignore this!
+    </h6>
+
+    Here are the comments in raw JSON form:
+    <pre>
+    <%= JSON.stringify(comments,null,5) %>
+    </pre>
+    <!-- the <pre> tag preserves the spacing and JSON.stringify makes it look pretty -->
+
+</div>

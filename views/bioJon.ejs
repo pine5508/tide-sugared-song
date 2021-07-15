@@ -42,25 +42,6 @@
       </ul>
     </p>
   </div>
-  <div class="col">
-    <h2>Comment</h2>
-    <form method="post" action="/addCommentForJon">
-      <div class="row mb-3">
-        <div class="col">
-          <input type="text" class="form-control" id="title" placeholder="Title">
-        </div>
-        <div class="col">
-          <input type="text" class="form-control" id="rating" placeholder="Rate">
-        </div>
-      </div>
-      <div class="row mb-3">
-        <textarea class="form-control" id="comment" rows="2" placeholder="Leave a comment..."></textarea>
-      </div>
-      <div class=""
-      <button type="submit" class="btn btn-primary mb-3">Submit</button>
-    </form>
-    
-  </div>
 </div>
 
 <hr>
@@ -94,3 +75,57 @@
     </div>
   </form>
 </div>
+
+<div>
+  <h2>Comments</h2>
+  <form method="post" action="/addCommentForJon">
+      <div class="row mb-3">
+        <div class="col">
+          <input type="text" class="form-control" name="title" placeholder="Title">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" name="rating" placeholder="Rate">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <textarea class="form-control" name="text" rows="2" placeholder="Leave a comment..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary mb-3">Submit</button>
+    </form>
+
+  <h3>Comments from previous visitors</h3>
+  <ul>
+    <% comments.forEach(comment => { %>
+    <li>
+      <%= comment.title %> <i><%= comment.createdAt %></i>
+      <br>
+      <%= comment.text %>
+      <br>
+      Rating: <%= comment.rating %>
+    </li>
+    <% }) %>
+</ul>
+
+<div style="color:red">
+
+    <h6>
+      The rest of this page is just for the developers!<br>
+      Everyone else can ignore this!
+    </h6>
+
+    Here are the comments in raw JSON form:
+    <pre>
+    <%= JSON.stringify(comments,null,5) %>
+    </pre>
+    <!-- the <pre> tag preserves the spacing and JSON.stringify makes it look pretty -->
+
+</div>
+  
+</div>
+
+
+
+
+  
+
+

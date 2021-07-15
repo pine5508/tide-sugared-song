@@ -103,10 +103,95 @@ app.post('/addCommentForRahma',
 
 
 app.get('/bio/rohan', (req,res)=>res.render('bioRohan'));
+/**************** Comments on Rohan's Bio **************************/
 
-app.get('/bio/jon', (req,res)=>res.render('bioJon'));
+const commentForRohan = require('./models/CommentForRohan')  // this is the schema for commentsForRohan
+
+//app.get('/bio/Rohan', (req,res)=>res.render('bioRohan'));
+
+//we have to find all of the most recent comments to show them on the bio page
+app.get('/bio/Rohan', 
+  async (req,res,next) => {
+    try {
+      res.locals.comments = 
+        await commentForRohan
+                 .find({}) // get all the comments
+                 .sort({createdAt:-1})  // sort by creation date descending, most recent first
+                 .limit(10) // show only the last 10 comments
+      res.render('bioRohan')
+    } catch(error){
+      next(error)
+    }
+})
+
+
+// here is where we get a comment (title, text, user) and add it to a collection in the database
+app.post('/addCommentForRohan', isLoggedIn,
+  async (req,res,next) => {
+    try {
+      
+      const comment = 
+        new commentForRohan({
+              title:req.body.title,
+              text:req.body.text,
+              createdAt: new Date(),
+              userId: req.user._id,      // they have to be logged in to leave a comment
+            })
+    
+      await comment.save()
+
+      res.redirect('/bio/Rohan')
+      
+    } catch(error){
+      next(error)
+    }
+})
+
+
+
+
+const CommentForJon = require('./models/CommentForJon')  // this is the schema for CommentsForJon
+
+app.get('/bio/jon', 
+    async (req,res,next) => {
+    try {
+      res.locals.comments = 
+        await CommentForJon
+                 .find({}) // get all the comments
+                 .sort({createdAt:-1})  // sort by creation date descending, most recent first
+                 .limit(10) // show only the last 10 comments
+      res.render('bioJon')
+    } catch(error){
+      next(error)
+    }
+})
+
+app.post('/addCommentForJon', 
+         isLoggedIn,
+  async (req,res,next) => {
+    try {
+      
+      const comment = 
+        new CommentForJon({
+              title:req.body.title,
+              text:req.body.text,
+              rating:req.body.rating,
+              createdAt: new Date(),
+              userId: req.user._id,      // they have to be logged in to leave a comment
+            })
+    
+      await comment.save()
+
+      res.redirect('/bio/Jon')
+      
+    } catch(error){
+      next(error)
+    }
+})
 
 const CommentForAlan = require('./models/CommentForAlan')  // this is the schema for CommentsForAlan
+
+
 
 //app.get('/bio/Alan', (req,res)=>res.render('bioAlan'));
 
@@ -136,6 +221,7 @@ app.post('/addCommentForAlan',
         new CommentForAlan({
               title:req.body.title,
               text:req.body.text,
+              rating:req.body.rating,
               createdAt: new Date(),
               userId: req.user._id,      // they have to be logged in to leave a comment
             })
@@ -149,8 +235,89 @@ app.post('/addCommentForAlan',
     }
 })
 
-app.get('/bio/sasha', (req,res)=>res.render("biosasha"));
+const CommentForSasha = require('./models/CommentForSasha')  // this is the schema for CommentsForTim
 
+//app.get('/bio/Tim', (req,res)=>res.render('bioTim'));
+
+//we have to find all of the most recent comments to show them on the bio page
+app.get('/bio/Sasha', 
+  async (req,res,next) => {
+    try {
+      res.locals.comments = 
+        await CommentForSasha
+                 .find({}) // get all the comments
+                 .sort({createdAt:-1})  // sort by creation date descending, most recent first
+                 .limit(10) // show only the last 10 comments
+      res.render('bioSasha')
+    } catch(error){
+      next(error)
+    }
+})
+
+
+// here is where we get a comment (title, text, user) and add it to a collection in the database
+app.post('/addCommentForSasha', 
+         isLoggedIn,
+  async (req,res,next) => {
+    try {
+      
+      const comment = 
+        new CommentForSasha({
+              title:req.body.title,
+              text:req.body.text,
+              rating:req.body.rating,
+              createdAt: new Date(),
+              userId: req.user._id,      // they have to be logged in to leave a comment
+            })
+    
+      await comment.save()
+
+      res.redirect('/bio/Sasha')
+      
+    } catch(error){
+      next(error)
+    }
+})
+
+
+const CommentForJon = require('./models/CommentForJon')  // this is the schema for CommentsForJon
+
+app.get('/bio/jon', 
+    async (req,res,next) => {
+    try {
+      res.locals.comments = 
+        await CommentForJon
+                 .find({}) // get all the comments
+                 .sort({createdAt:-1})  // sort by creation date descending, most recent first
+                 .limit(10) // show only the last 10 comments
+      res.render('bioJon')
+    } catch(error){
+      next(error)
+    }
+})
+
+app.post('/addCommentForGerardo', 
+         isLoggedIn,
+  async (req,res,next) => {
+    try {
+      
+      const comment = 
+        new CommentForGerardo({
+              title:req.body.title,
+              text:req.body.text,
+              rating:req.body.rating,
+              createdAt: new Date(),
+              userId: req.user._id,      // they have to be logged in to leave a comment
+            })
+    
+      await comment.save()
+
+      res.redirect('/bio/Jon')
+      
+    } catch(error){
+      next(error)
+    }
+})
 app.get('/bio/gerardo', (req,res)=>res.render("bioGerardo"))
 
 
@@ -209,52 +376,6 @@ app.post('/alanMadlib',
   res.locals.body = req.body
   res.render('madlibAlan')
 })
-
-/**************** Comments on Rohan's Bio **************************/
-
-const commentForRohan = require('./models/CommentForRohan')  // this is the schema for commentsForRohan
-
-//app.get('/bio/Rohan', (req,res)=>res.render('bioRohan'));
-
-//we have to find all of the most recent comments to show them on the bio page
-app.get('/bio/Rohan', 
-  async (req,res,next) => {
-    try {
-      res.locals.comments = 
-        await commentForRohan
-                 .find({}) // get all the comments
-                 .sort({createdAt:-1})  // sort by creation date descending, most recent first
-                 .limit(10) // show only the last 10 comments
-      res.render('bioRohan')
-    } catch(error){
-      next(error)
-    }
-})
-
-
-// here is where we get a comment (title, text, user) and add it to a collection in the database
-app.post('/addCommentForRohan', isLoggedIn,
-  async (req,res,next) => {
-    try {
-      
-      const comment = 
-        new commentForRohan({
-              title:req.body.title,
-              text:req.body.text,
-              createdAt: new Date(),
-              userId: req.user._id,      // they have to be logged in to leave a comment
-            })
-    
-      await comment.save()
-
-      res.redirect('/bio/Rohan')
-      
-    } catch(error){
-      next(error)
-    }
-})
-
-
 
 /* ******************* Yearbook Form Example *********************/
 
