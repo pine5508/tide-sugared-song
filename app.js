@@ -282,7 +282,7 @@ app.post('/addCommentForSasha',
 
 const CommentForGerardo = require('./models/CommentForGerardo')  // this is the schema for CommentsForGerardo
 
-//app.get('/bio/Gerardo, (req,res)=>res.render('bioGerardo'));
+//app.get('/bio/Gerardo', (req,res)=>res.render('bioGerardo'));
 
 //we have to find all of the most recent comments to show them on the bio page
 
