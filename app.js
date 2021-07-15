@@ -106,12 +106,12 @@ app.post('/addCommentForRahma',
 app.get('/bio/rohan', (req,res)=>res.render('bioRohan'));
 /**************** Comments on Rohan's Bio **************************/
 
-const CommentForRahma = require('./models/CommentForRahma')  // this is the schema for CommentForRahma
+const CommentForRohan = require('./models/CommentForRohan')  // this is the schema for CommentForRahma
 
-//app.get('/bio/Tim', (req,res)=>res.render('bioTim'));
+//app.get('/bio/rohan', (req,res)=>res.render('bioRohan'));
 
 //we have to find all of the most recent comments to show them on the bio page
-app.get('/bio/Rahma', 
+app.get('/bio/rohan', 
   async (req,res,next) => {
     try {
       res.locals.comments = 
@@ -143,7 +143,7 @@ app.post('/addCommentForRohan',
     
       await comment.save()
 
-      res.redirect('/bio/Rohan')
+      res.redirect('/bio/rohan')
       
     } catch(error){
       next(error)
