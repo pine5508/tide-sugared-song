@@ -324,6 +324,8 @@ app.post('/addCommentForGerardo',
 })
 app.get('/bio/gerardo', (req,res)=>res.render("bioGerardo"))
 
+app.get('/info', (req,res)=>res.render("info"))
+
 
 /* ******************* HTML Form Example *********************/
 
