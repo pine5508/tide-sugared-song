@@ -105,16 +105,16 @@ app.post('/addCommentForRahma',
 })
 
 
-app.get('/bio/rohan', (req,res)=>res.render('bioRohan'));
+
 /**************** Comments on Rohan's Bio **************************/
 
 const CommentForRohan = require('./models/CommentForRohan')  // this is the schema for CommentForRohan
 
 //we have to find all of the most recent comments to show them on the bio page
-app.get('/bio/rohan', 
+app.get('/bio/rohan',
   async (req,res,next) => {
     try {
-      res.locals.comments = 
+      res.locals.comments =
         await CommentForRohan
                  .find({}) // get all the comments
                  .sort({createdAt:-1})  // sort by creation date descending, most recent first
@@ -127,12 +127,12 @@ app.get('/bio/rohan',
 
 
 // here is where we get a comment (title, text, user) and add it to a collection in the database
-app.post('/addCommentForRohan', 
+app.post('/addCommentForRohan',
          isLoggedIn,
   async (req,res,next) => {
     try {
       
-      const comment = 
+      const comment =
         new CommentForRohan({
               title:req.body.title,
               text:req.body.text,
