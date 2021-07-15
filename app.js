@@ -240,7 +240,7 @@ app.post('/addCommentForAlan',
 
 const CommentForSasha = require('./models/CommentForSasha')  // this is the schema for CommentsForSasha
 
-//app.get('/bio/Tim', (req,res)=>res.render('bioTim'));
+//app.get('/bio/Sasha', (req,res)=>res.render('bioSasha'));
 
 //we have to find all of the most recent comments to show them on the bio page
 app.get('/bio/Sasha', 
@@ -329,11 +329,55 @@ app.get('/bio/gerardo', (req,res)=>res.render("bioGerardo"))
 
 /* ******************* HTML Form Example *********************/
 
+const Locations = require('./models/Locations')  // this is the schema for CommentsForGerardo
+
+//app.get('/bio/Gerardo', (req,res)=>res.render('bioGerardo'));
+
+//we have to find all of the most recent comments to show them on the bio page
+
+app.get('/bio/Gerardo',
+    async (req,res,next) => {
+    try {
+      res.locals.comments = 
+        await CommentForGerardo
+                 .find({}) // get all the comments
+                 .sort({createdAt:-1})  // sort by creation date descending, most recent first
+                 .limit(10) // show only the last 10 comments
+      res.render('bioGerardo')
+    } catch(error){
+      next(error)
+    }
+})
+
+app.post('/addCommentForGerardo', 
+         isLoggedIn,
+  async (req,res,next) => {
+    try {
+      
+      const comment = 
+        new CommentForGerardo({
+              title:req.body.title,
+              text:req.body.text,
+              rating:req.body.rating,
+              createdAt: new Date(),
+              userId: req.user._id,      // they have to be logged in to leave a comment
+            })
+    
+      await comment.save()
+
+      res.redirect('/bio/Gerardo')
+      
+    } catch(error){
+      next(error)
+    }
+})
+app.get('/bio/gerardo', (req,res)=>res.render("bioGerardo"))
+
 app.get("/locationForm",(req,res) => {
   res.render("addlocationform")
 })
 
-app.post("/showformdataJSON",(req,res) => {
+app.post("/addLocationJSON",(req,res) => {
   res.json(req.body)
 })
 

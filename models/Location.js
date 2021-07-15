@@ -7,12 +7,11 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 var locationSchema = Schema( {
   namePlace:String,
   reupcycle:String,
-  inputAddress1:String,
-  inputAddress2:String,
-  inputAddress3:String,
-  inputCity:String, 
-  inputState:String,
-  inputZip:String,
+  address1:String,
+  address2:String,
+  city:String, 
+  state:String,
+  zip:String,
   createdAt: Date,
   userId: ObjectId,
 } );
