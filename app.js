@@ -266,7 +266,7 @@ app.post('/addCommentForSasha',
         new CommentForSasha({
               title:req.body.title,
               text:req.body.text,
-              rating:req.body.rating,
+            
               createdAt: new Date(),
               userId: req.user._id,      // they have to be logged in to leave a comment
             })
