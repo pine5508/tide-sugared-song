@@ -11,4 +11,4 @@ var commentSchema = Schema( {
   userId: ObjectId,   // who left the comment
 } );
 
-module.exports = mongoose.model(  'CommentForSasha', commentSchema );
+module.exports = mongoose.model( 'CommentForSasha', commentSchema );

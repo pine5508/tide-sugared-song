@@ -58,6 +58,8 @@ app.get('/', (req,res)=>res.render('index'));
 
 app.get('/about', (req,res)=>res.render('about'));
 
+app.get('/matter', (req,res)=>res.render('matter'));
+
 const CommentForRahma = require('./models/CommentForRahma')  // this is the schema for CommentsForTim
 
 //app.get('/bio/Tim', (req,res)=>res.render('bioTim'));
@@ -106,9 +108,7 @@ app.post('/addCommentForRahma',
 app.get('/bio/rohan', (req,res)=>res.render('bioRohan'));
 /**************** Comments on Rohan's Bio **************************/
 
-const CommentForRohan = require('./models/CommentForRohan')  // this is the schema for CommentForRahma
-
-//app.get('/bio/rohan', (req,res)=>res.render('bioRohan'));
+const CommentForRohan = require('./models/CommentForRohan')  // this is the schema for CommentForRohan
 
 //we have to find all of the most recent comments to show them on the bio page
 app.get('/bio/rohan', 
@@ -143,14 +143,12 @@ app.post('/addCommentForRohan',
     
       await comment.save()
 
-      res.redirect('/bio/rohan')
+      res.redirect('/bio/Rohan')
       
     } catch(error){
       next(error)
     }
 })
-
-
 
 
 const CommentForJon = require('./models/CommentForJon')  // this is the schema for CommentsForJon
@@ -389,6 +387,7 @@ app.post('/jonMadlib', isLoggedIn, (req,res) => {
   res.locals.body = req.body
   res.render('madlibJon')
 })
+
 app.post('/GerardoMadlib',
          isLoggedIn ,
          (req,res) => {
@@ -405,11 +404,6 @@ app.post('/RahmaMadlib',
 app.post('/rohanMadLib', isLoggedIn, (req,res) => {
   res.locals.body = req.body
   res.render('madibRohan')
-})
-
-app.post('/jonMadlib', isLoggedIn, (req,res) => {
-  res.locals.body = req.body
-  res.render('madlibJon')
 })
 
 app.post('/sashaMadlib',
