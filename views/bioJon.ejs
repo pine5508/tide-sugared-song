@@ -79,40 +79,42 @@
 <hr>
 <div>
   <h2>Comments</h2>
-  <div class="col">
-    <form method="post" action="/addCommentForJon">
-      <div class="row mb-3">
-        <div class="col">
-          <input type="text" class="form-control" name="title" placeholder="Title">
+  <div class="row">
+    <div class="col">
+      <form method="post" action="/addCommentForJon">
+        <div class="row mb-3">
+          <div class="col">
+            <input type="text" class="form-control" name="title" placeholder="Title">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" name="rating" placeholder="Rate">
+          </div>
         </div>
-        <div class="col">
-          <input type="text" class="form-control" name="rating" placeholder="Rate">
+        <div class="mb-3">
+          <textarea class="form-control" name="text" rows="2" placeholder="Leave a comment..."></textarea>
         </div>
-      </div>
-      <div class="row mb-3">
-        <textarea class="form-control" name="text" rows="2" placeholder="Leave a comment..."></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary mb-3">Submit</button>
-    </form>
-  </div>
-  <div class="col">
-    <h3>Comments from previous visitors</h3>
-    <ul>
-    <% comments.forEach(comment => { %>
-    <li>
-      <%= comment.title %> <i><%= comment.createdAt %></i>
-      <br>
-      <%= comment.text %>
-      <br>
-      Rating: <%= comment.rating %>
-    </li>
-    <% }) %>
-    </ul>
-
-    <div style="color:red">
-      <h6>The rest of this page is just for the developers! Everyone else can ignore this!</h6>
-      Here are the comments in raw JSON form: <pre><%= JSON.stringify(comments,null,5) %></pre>
+        <button type="submit" class="btn btn-primary mb-3">Submit</button>
+      </form>
     </div>
+
+    <div class="col">
+      <h3>Comments from previous visitors</h3>
+      <ul>
+        <% comments.forEach(comment => { %>
+        <li>
+          <%= comment.title %> <i><%= comment.createdAt %></i>
+          <br>
+          <%= comment.text %>
+          <br>
+          Rating: <%= comment.rating %>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+  <div style="color:red">
+    <h6>The rest of this page is just for the developers! Everyone else can ignore this! Here are the comments in raw JSON form:</h6>
+    <pre><%= JSON.stringify(comments,null,5) %></pre>
   </div>
 </div>
 
