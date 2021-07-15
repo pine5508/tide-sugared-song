@@ -9,15 +9,14 @@
     <input type="text" class="form-control" id="namePlace" name="namePlace">
     <div class="col-md-2">
       <div class="row">
-         <label for="reupcycle" class="form-label">Recycling/Upcycling Place</label>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="reupcycle" id="upcycle" checked>
-      <label class="form-check-label" for="upcycle">Upcycle</label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="reupcycle" id="recycle">
-      <label class="form-check-label" for="recycle">Recycle</label>
-    </div>
+          <input class="form-check-input" type="radio" name="reupcycle" id="upcycle" value="upcycle">
+          <label class="form-check-label" for="upcycle">Upcycle</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="reupcycle" id="recycle" value="recycle">
+          <label class="form-check-label" for="recycle">Recycle</label>
+        </div>
       </div>
     </div>
   </div>
@@ -44,7 +43,7 @@
   </div>
   <div class="col-md-2">
     <label for="zip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="zip" name="zip">
+    <input type="text" class="form-control" id="zip" name="zip" placeholder="00000">
   </div>
   <div class="col-12">
     <button type="submit" class="btn btn-primary">Submit</button>

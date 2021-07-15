@@ -329,53 +329,52 @@ app.get('/bio/gerardo', (req,res)=>res.render("bioGerardo"))
 
 /* ******************* HTML Form Example *********************/
 
-const Locations = require('./models/Locations')  // this is the schema for CommentsForGerardo
+const Location = require('./models/Location')  // this is the schema for Locations
 
-//app.get('/bio/Gerardo', (req,res)=>res.render('bioGerardo'));
+//app.get('/locationForm', (req,res)=>res.render('Location'));
 
 //we have to find all of the most recent comments to show them on the bio page
 
-app.get('/bio/Gerardo',
+app.get('/locationForm',
     async (req,res,next) => {
     try {
-      res.locals.comments = 
-        await CommentForGerardo
+      res.locals.locations = 
+        await Location
                  .find({}) // get all the comments
                  .sort({createdAt:-1})  // sort by creation date descending, most recent first
                  .limit(10) // show only the last 10 comments
-      res.render('bioGerardo')
+      res.render('addlocationform')
     } catch(error){
       next(error)
     }
 })
 
-app.post('/addCommentForGerardo', 
+app.post('/addLocation', 
          isLoggedIn,
   async (req,res,next) => {
     try {
-      
-      const comment = 
-        new CommentForGerardo({
-              title:req.body.title,
-              text:req.body.text,
-              rating:req.body.rating,
-              createdAt: new Date(),
-              userId: req.user._id,      // they have to be logged in to leave a comment
-            })
+      const location = 
+        new Location({
+          namePlace:req.body.namePlace,
+          reupcycle:req.body.reupcycle,
+          address1:req.body.address1,
+          address2:req.body.address2,
+          city:req.body.city, 
+          state:req.body.state,
+          zip:req.body.zip,
+          createdAt: new Date(),
+          userId: req.user._id,      // they have to be logged in to leave a comment
+        })
     
-      await comment.save()
+      await location.save()
 
-      res.redirect('/bio/Gerardo')
+      res.redirect('/locationForm')
       
     } catch(error){
       next(error)
     }
 })
-app.get('/bio/gerardo', (req,res)=>res.render("bioGerardo"))
 
-app.get("/locationForm",(req,res) => {
-  res.render("addlocationform")
-})
 
 app.post("/addLocationJSON",(req,res) => {
   res.json(req.body)
