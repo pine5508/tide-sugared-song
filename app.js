@@ -106,7 +106,7 @@ app.post('/addCommentForRahma',
 app.get('/bio/rohan', (req,res)=>res.render('bioRohan'));
 /**************** Comments on Rohan's Bio **************************/
 
-const CommentForRahma = require('./models/CommentForRahma')  // this is the schema for CommentsForTim
+const CommentForRahma = require('./models/CommentForRahma')  // this is the schema for CommentForRahma
 
 //app.get('/bio/Tim', (req,res)=>res.render('bioTim'));
 
