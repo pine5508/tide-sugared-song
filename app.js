@@ -88,6 +88,7 @@ app.post('/addCommentForRahma',
         new CommentForRahma({
               title:req.body.title,
               text:req.body.text,
+              rating:req.body.rating,
               createdAt: new Date(),
               userId: req.user._id,      // they have to be logged in to leave a comment
             })
@@ -279,18 +280,21 @@ app.post('/addCommentForSasha',
     }
 })
 
+const CommentForGerardo = require('./models/CommentForGerardo')  // this is the schema for CommentsForGerardo
 
-const CommentForJon = require('./models/CommentForJon')  // this is the schema for CommentsForJon
+//app.get('/bio/Gerardo, (req,res)=>res.render('bioGerardo'));
 
-app.get('/bio/jon', 
+//we have to find all of the most recent comments to show them on the bio page
+
+app.get('/bio/Gerardo',
     async (req,res,next) => {
     try {
       res.locals.comments = 
-        await CommentForJon
+        await CommentForGerardo
                  .find({}) // get all the comments
                  .sort({createdAt:-1})  // sort by creation date descending, most recent first
                  .limit(10) // show only the last 10 comments
-      res.render('bioJon')
+      res.render('bioGerardo')
     } catch(error){
       next(error)
     }
@@ -312,7 +316,7 @@ app.post('/addCommentForGerardo',
     
       await comment.save()
 
-      res.redirect('/bio/Jon')
+      res.redirect('/bio/Gerardo')
       
     } catch(error){
       next(error)

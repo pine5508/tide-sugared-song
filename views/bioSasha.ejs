@@ -53,6 +53,11 @@
 <style>
   i {color:red}
 
+  
+<h2>
+  Please leave a comment
+</h2>
+
 hr>
 <% if (!loggedIn) {%>
 
@@ -70,8 +75,30 @@ hr>
     <input type="submit" class="btn btn-warning" value="Submit comment">
   </form>
 
-<%}%>  
-  
+<hr>
+
+<h2>
+  Please leave a comment
+</h2>
+
+<hr>
+<% if (!loggedIn) {%>
+
+   <b> You must be logged in to leave a comment! </b>
+
+<%} else {%> 
+
+  <form method="post" action="/addCommentForSasha">
+    Title: 
+    <input type="text" name="title" size="40" placeholder="summarize in a few words"><br>
+    More details (optional)<br>
+    <textarea name="text" cols="40" placeholder="what do you think of my bio page?"></textarea><br>
+    <input type="submit" class="btn btn-warning" value="Submit comment">
+  </form>
+
+<%}%>
+
+
 <h2>
   Comments from previous visitors
 </h2>
@@ -106,5 +133,5 @@ hr>
     </pre>
     <!-- the <pre> tag preserves the spacing and JSON.stringify makes it look pretty -->
 
-</div>  
+</div>
   

@@ -76,9 +76,11 @@
   </form>
 </div>
 
+<hr>
 <div>
   <h2>Comments</h2>
-  <form method="post" action="/addCommentForJon">
+  <div class="col">
+    <form method="post" action="/addCommentForJon">
       <div class="row mb-3">
         <div class="col">
           <input type="text" class="form-control" name="title" placeholder="Title">
@@ -92,9 +94,10 @@
       </div>
       <button type="submit" class="btn btn-primary mb-3">Submit</button>
     </form>
-
-  <h3>Comments from previous visitors</h3>
-  <ul>
+  </div>
+  <div class="col">
+    <h3>Comments from previous visitors</h3>
+    <ul>
     <% comments.forEach(comment => { %>
     <li>
       <%= comment.title %> <i><%= comment.createdAt %></i>
@@ -104,23 +107,13 @@
       Rating: <%= comment.rating %>
     </li>
     <% }) %>
-</ul>
+    </ul>
 
-<div style="color:red">
-
-    <h6>
-      The rest of this page is just for the developers!<br>
-      Everyone else can ignore this!
-    </h6>
-
-    Here are the comments in raw JSON form:
-    <pre>
-    <%= JSON.stringify(comments,null,5) %>
-    </pre>
-    <!-- the <pre> tag preserves the spacing and JSON.stringify makes it look pretty -->
-
-</div>
-  
+    <div style="color:red">
+      <h6>The rest of this page is just for the developers! Everyone else can ignore this!</h6>
+      Here are the comments in raw JSON form: <pre><%= JSON.stringify(comments,null,5) %></pre>
+    </div>
+  </div>
 </div>
 
 
