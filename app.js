@@ -62,6 +62,8 @@ app.get('/', (req,res)=>res.render('index'));
 
 app.get('/about',(req,res) => res.render('about'))
 
+app.get('/feedback',(req,res) => res.render('feedback'))
+
 app.get('/matter', (req,res)=>res.render('matter'));
 
 app.get('/addlocationform', (req,res)=>res.render('addlocationform'));
@@ -285,6 +287,15 @@ app.post('/addCommentForSasha',
       next(error)
     }
 })
+
+app.get('/Chicagolocations',
+    (req,res) => {
+      res.render('Chicagolocations')
+    })
+
+
+
+
 
 const CommentForGerardo = require('./models/CommentForGerardo')  // this is the schema for CommentsForGerardo
 
