@@ -64,7 +64,7 @@ app.get('/about',(req,res) => res.render('about'))
 
 app.get('/feedback',(req,res) => res.render('feedback'))
 
-app.get('/matter', (req,res)=>res.render('matter'));
+app.get('/purpose', (req,res)=>res.render('purpose'));
 
 app.get('/locBoston', (req,res)=>res.render('locBoston'));
 
@@ -306,6 +306,11 @@ app.get('/locIslamabad',
 app.get('/locHouston',
         (req,res) => {
       res.render('locHouston')
+      })
+
+app.get('/purpose',
+        (req,res) => {
+      res.render('purpose')
       })
 
 
