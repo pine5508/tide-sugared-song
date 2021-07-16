@@ -43,6 +43,7 @@ var app = express();  // this is the express server itself!
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -52,12 +53,14 @@ app.use(layouts);
 app.use(authRouter)
 app.use(cors());
 
+
 /* ******************* Route for the main pages *********************/
 
 
 app.get('/', (req,res)=>res.render('index'));
+//app.use('/users', usersRouter);
 
-app.get('/about', (req,res)=>res.render('about'));
+app.get('/about',(req,res) => res.render('about'))
 
 app.get('/matter', (req,res)=>res.render('matter'));
 
@@ -434,7 +437,6 @@ app.post("/yearbookView",(req,res)=>{
     const year=parseFloat(req.body.year)
     const age=(2021-year)
     const ageindays=age*365
-
     // pass data into the EJS page for rendering
     res.locals.name=req.body.name
     res.locals.img=req.body.img
@@ -550,6 +552,7 @@ app.get('/pomodoros/clear',isLoggedIn,
 /* *************** User Profiles ****************/
 
 
+
 app.get('/profiles',
     isLoggedIn,
     async (req,res,next) => {
@@ -592,11 +595,10 @@ app.post('/editProfile',
     isLoggedIn,
     async (req,res,next) => {
       try {
-        let username = req.body.username
-        let age = req.body.age
-        req.user.username = username
-        req.user.age = age
+        req.user.username = req.body.username
+        req.user.age = req.body.age
         req.user.imageURL = req.body.imageURL
+        req.user.quote = req.body.quote
         await req.user.save()
         res.redirect('/profile')
       } catch (error) {
