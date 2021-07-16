@@ -66,8 +66,6 @@ app.get('/feedback',(req,res) => res.render('feedback'))
 
 app.get('/matter', (req,res)=>res.render('matter'));
 
-app.get('/addLocation', (req,res)=>res.render('addLocation'));
-
 app.get('/locChicago', (req,res)=>res.render('locChicago'));
 
 app.get('/locIslamabad', (req,res)=>res.render('locIslamabad'));
@@ -291,9 +289,9 @@ app.post('/addCommentForSasha',
     }
 })
 
-app.get('/Chicagolocations',
+app.get('/locChicago',
     (req,res) => {
-      res.render('Chicagolocations')
+      res.render('locChicago')
     })
 
 

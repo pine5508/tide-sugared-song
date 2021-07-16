@@ -56,9 +56,11 @@
   <!-- here is how we iterate over all locations in the database! -->
   
   <% locations.forEach(location => { %> 
+  
    
     <li> 
-         <%= location.namePlace %> <i> <%= location.createdAt %></i>
+         <%= location.namePlace %> 
+      <i> <%= location.createdAt %></i>
          <br>
          <%= location.city %>
    </li>
