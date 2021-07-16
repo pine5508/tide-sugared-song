@@ -64,6 +64,8 @@ app.get('/about',(req,res) => res.render('about'))
 
 app.get('/matter', (req,res)=>res.render('matter'));
 
+app.get('/addlocationform', (req,res)=>res.render('addlocationform'));
+
 const CommentForRahma = require('./models/CommentForRahma')  // this is the schema for CommentsForTim
 
 //app.get('/bio/Tim', (req,res)=>res.render('bioTim'));
@@ -339,7 +341,7 @@ const Location = require('./models/Location')  // this is the schema for Locatio
 
 //we have to find all of the most recent comments to show them on the bio page
 
-app.get('/locationForm',
+app.get('/addlocationForm',
     async (req,res,next) => {
     try {
       res.locals.locations = 
@@ -372,7 +374,7 @@ app.post('/addLocation',
     
       await location.save()
 
-      res.redirect('/locationForm')
+      res.redirect('/laddocationForm')
       
     } catch(error){
       next(error)
