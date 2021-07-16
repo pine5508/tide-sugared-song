@@ -43,7 +43,6 @@
         <li class="nav-item">
           <a class="nav-link" href="/feedback">Feedback</a>
         </li>
-   
         
         <% if (!loggedIn) { %>
         <li class="nav-item">
@@ -55,7 +54,7 @@
           <a class="nav-link" href="/logout">Logout</a>
         </li>
         <li class="nav-item">
-          <button class="btn btn-outline-light" href="/"><%= user.googleemail%></button>
+          <button class="btn btn-outline-light" href="/profile"><%= user.googleemail %></button>
         </li>
         <% } %>
   
