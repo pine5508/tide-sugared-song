@@ -66,7 +66,11 @@ app.get('/feedback',(req,res) => res.render('feedback'))
 
 app.get('/matter', (req,res)=>res.render('matter'));
 
-app.get('/addlocationform', (req,res)=>res.render('addlocationform'));
+app.get('/addLocation', (req,res)=>res.render('addLocation'));
+
+app.get('/locChicago', (req,res)=>res.render('locChicago'));
+
+app.get('/locIslamabad', (req,res)=>res.render('locIslamabad'));
 
 const CommentForRahma = require('./models/CommentForRahma')  // this is the schema for CommentsForTim
 
@@ -202,7 +206,6 @@ const CommentForAlan = require('./models/CommentForAlan')  // this is the schema
 
 
 
-//app.get('/bio/Alan', (req,res)=>res.render('bioAlan'));
 
 //we have to find all of the most recent comments to show them on the bio page
 app.get('/bio/Alan', 
@@ -294,7 +297,10 @@ app.get('/Chicagolocations',
     })
 
 
-
+app.get('/locIslamabad',
+    (req,res) => {
+      res.render('locIslamabad')
+    })
 
 
 const CommentForGerardo = require('./models/CommentForGerardo')  // this is the schema for CommentsForGerardo
@@ -352,7 +358,7 @@ const Location = require('./models/Location')  // this is the schema for Locatio
 
 //we have to find all of the most recent comments to show them on the bio page
 
-app.get('/addlocationForm',
+app.get('/addLocation',
     async (req,res,next) => {
     try {
       res.locals.locations = 
@@ -360,7 +366,7 @@ app.get('/addlocationForm',
                  .find({}) // get all the comments
                  .sort({createdAt:-1})  // sort by creation date descending, most recent first
                  .limit(10) // show only the last 10 comments
-      res.render('addlocationform')
+      res.render('addLocation')
     } catch(error){
       next(error)
     }
@@ -385,7 +391,7 @@ app.post('/addLocation',
     
       await location.save()
 
-      res.redirect('/laddocationForm')
+      res.redirect('/addLocation')
       
     } catch(error){
       next(error)
