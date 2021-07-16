@@ -66,7 +66,11 @@ app.get('/feedback',(req,res) => res.render('feedback'))
 
 app.get('/matter', (req,res)=>res.render('matter'));
 
+app.get('/locBoston', (req,res)=>res.render('locBoston'));
+
 app.get('/locChicago', (req,res)=>res.render('locChicago'));
+
+app.get('/locHouston', (req,res)=>res.render('locHouston'));
 
 app.get('/locIslamabad', (req,res)=>res.render('locIslamabad'));
 
@@ -299,6 +303,10 @@ app.get('/locIslamabad',
     (req,res) => {
       res.render('locIslamabad')
     })
+app.get('/locHouston',
+        (req,res) => {
+      res.render('locHouston')
+      })
 
 
 const CommentForGerardo = require('./models/CommentForGerardo')  // this is the schema for CommentsForGerardo
