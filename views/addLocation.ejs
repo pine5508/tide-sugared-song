@@ -69,10 +69,16 @@
   
 </ul>
 
+<% if (loggedIn) {%>
+  <% if (['rohankelkar@brandeis.edu','tjhickey@brandeis.edu'].includes(user.googleemail)) { %>
+    <p>
+      <h1>
+        Developer's only!
+      </h1>
 
-  <pre><%= JSON.stringify(locations,null,5) %></pre>
+    <pre><%= JSON.stringify(locations,null,5) %></pre>
 
-<% id (user.googleemail= "rohankelkar@brandeis.edu") { %>
-  <p>
-    hi
-</p>
+
+    </p>
+
+<% } %>

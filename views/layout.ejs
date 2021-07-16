@@ -22,7 +22,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
             Locations
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/locChicago">Chicago</a></li>
             <li><a class="dropdown-item" href="/locIslamabad">Islamabad</a></li>
             <li><a class="dropdown-item" href="/locBoston">Boston</a></li>
@@ -54,7 +54,7 @@
           <a class="nav-link" href="/logout">Logout</a>
         </li>
         <li class="nav-item">
-          <button class="btn btn-outline-light" href="/profile"><%= user.googleemail %></button>
+          <a class="btn btn-outline-light" href="/profile"><%= user.googleemail %></a>
         </li>
         <% } %>
   
