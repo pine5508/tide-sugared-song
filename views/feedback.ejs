@@ -4,7 +4,7 @@
   </h1>
 </div>
 
-
+<% if (!loggedIn) { %>
 
 <form class="row g-3" method="post" action="/giveFeeback">
   <div class="mb-3">
@@ -13,8 +13,9 @@
   </div>
 </form>
 
- 
-<% if (!loggedIn) { %>
+ <%} else { %>
+
    <p>
-     hi
+     hi, you have to be logged in to leave feedback!
    </p>
+<% } %>
