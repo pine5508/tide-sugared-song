@@ -392,6 +392,43 @@ app.post('/addLocation',
     }
 })
 
+const Feedback = require('./models/Feedback')  // this is the schema for Feedback
+
+app.get('/feedback',
+    async (req,res,next) => {
+    try {
+      res.locals.feedback = 
+        await Feedback
+                 .find({}) // get all the comments
+                 .sort({createdAt:-1})  // sort by creation date descending, most recent first
+                 .limit(10) // show only the last 10 comments
+      res.render('feedback')
+    } catch(error){
+      next(error)
+    }
+})
+
+app.post('/feedback', 
+         isLoggedIn,
+  async (req,res,next) => {
+    try {
+      const feedback = 
+        new Feedback({
+          namePlace:req.body.namePlace,
+          createdAt: new Date(),
+          userId: req.user._id,      // they have to be logged in to leave a comment
+        })
+    
+      await location.save()
+
+      res.redirect('/feedback')
+      
+    } catch(error){
+      next(error)
+    }
+})
+
+
 
 app.post("/addLocationJSON",(req,res) => {
   res.json(req.body)
