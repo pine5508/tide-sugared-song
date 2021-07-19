@@ -51,6 +51,7 @@ app.get('/locChicago', (req,res)=>res.render('locChicago'))
 app.get('/locHouston', (req,res)=>res.render('locHouston'))
 app.get('/locIslamabad', (req,res)=>res.render('locIslamabad'))
 app.get('/locTest', (req,res)=>res.render('locTest'))
+app.get('/contributions', (req,res)=>res.render('contributions'))
 
 
 const CommentForRahma = require('./models/CommentForRahma') 
@@ -458,27 +459,6 @@ app.post('/alanMadlib',
   res.render('madlibAlan')
 })
 
-/* ******************* Yearbook Form Example *********************/
-
-app.get("/yearbookForm",(req,res)=>{
-    res.render("yearbookForm")
-})
-
-app.post("/yearbookView",(req,res)=>{
-    // do some calculations
-    const year=parseFloat(req.body.year)
-    const age=(2021-year)
-    const ageindays=age*365
-    // pass data into the EJS page for rendering
-    res.locals.name=req.body.name
-    res.locals.img=req.body.img
-    res.locals.year = year
-    res.locals.age = age
-    res.locals.ageindays= ageindays
-    res.locals.url=req.body.url
-    res.locals.quote=req.body.quote
-    res.render("yearbookView")
-})
 
 /* ********************** RECIPE API interactions ************/
 
