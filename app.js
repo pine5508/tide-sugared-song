@@ -412,6 +412,10 @@ app.post("/addLocationJSON",(req,res) => {
   res.json(req.body)
 })
 
+app.post("/feedbackJSON",(req,res) => {
+  res.json(req.body)
+})
+
 app.post("/showformdata",(req,res) => {
   res.locals.body = req.body
   res.render('showformdata')
