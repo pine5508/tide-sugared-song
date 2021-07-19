@@ -7,18 +7,22 @@
   <div class="col-10">
     <label for="namePlace" class="form-label">Name this place</label>
     <input type="text" class="form-control" id="namePlace" name="namePlace">
-    <div class="col-2">
-      <div class="row">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="reupcycle" id="upcycle" value="upcycle">
-          <label class="form-check-label" for="upcycle">Upcycle</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="reupcycle" id="recycle" value="recycle">
-          <label class="form-check-label" for="recycle">Recycle</label>
-        </div>
-      </div>
+  </div>
+  <div class="col-2">
+    <label for="reupcycle" class="form-label">Recycle / Upcycle</label>
+    <select id="reupcycle" name="reupcycle" class="form-select">
+      <option selected>Recycle</option>
+      <option>Upcycle</option>
+    </select>
+    <!---
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="reupcycle" id="upcycle" value="upcycle">
+      <label class="form-check-label" for="upcycle">Upcycle</label>
     </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="reupcycle" id="recycle" value="recycle">
+      <label class="form-check-label" for="recycle">Recycle</label>
+    -->
   </div>
   <div class="col-6">
     <label for="address1" class="form-label">Address</label>
@@ -26,11 +30,11 @@
   </div>
   <div class="col-6">
     <label for="address2" class="form-label">Address 2</label>
-    <input type="text" class="form-control" id="address2" name="address2"placeholder="Apartment, studio, or floor">
+    <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment, studio, or floor">
   </div>
   <div class="col-md-6">
     <label for="city" class="form-label">City</label>
-    <input type="text" class="form-control" id="city"  name="city">
+    <input type="text" class="form-control" id="city" name="city">
   </div>
   <div class="col-md-4">
     <label for="state" class="form-label">State</label>
