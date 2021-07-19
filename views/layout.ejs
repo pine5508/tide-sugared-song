@@ -27,29 +27,31 @@
             <li><a class="dropdown-item" href="/locIslamabad">Islamabad</a></li>
             <li><a class="dropdown-item" href="/locBoston">Boston</a></li>
             <li><a class="dropdown-item" href="/locHouston">Houston</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/addLocation">Suggest a Location</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href ="/addLocation">Suggest a location</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href ="/purpose">Purpose</a>
+          <a class="nav-link" href ="/purpose">Our Mission</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href ="/infoPage">Information</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About Us</a>
         </li>
       </ul>
       <ul class="navbar-nav justify-content-right">
         <li class="nav-item">
           <a class="nav-link" href="/feedback">Feedback</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About Us</a>
+        </li>
         
         <% if (!loggedIn) { %>
         <li class="nav-item">
           <a class="nav-link" href="/auth/google">Login</a>
+        </li>  
+        <li class="nav-item">
+          <a class="nav-link" href="https://greencycle.ga/auth/google">Login with Greencycle</a>
         </li>
     
         <% } else  { %>
