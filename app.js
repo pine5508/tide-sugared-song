@@ -42,7 +42,7 @@ app.use(cors());
 //Routes for main pages
 app.get('/', (req,res)=>res.render('index'))
 app.get('/about',(req,res) => res.render('about'))
-app.get('/blog',(req,res) => res.render('blog'))
+app.get('/news',(req,res) => res.render('news'))
 app.get('/feedback',(req,res) => res.render('feedback'))
 app.get('/mission', (req,res)=>res.render('mission'))
 app.get('/profile', (req,res)=>res.render('profile'))
@@ -548,7 +548,7 @@ app.get('/profile',
       res.render('profile')
     })
 
-app.get('/editProfile',
+app.get('/profile',
     isLoggedIn,
     (req,res) => res.render('editProfile'))
 
