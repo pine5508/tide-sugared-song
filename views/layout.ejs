@@ -48,9 +48,11 @@
         </li>
         
         <% if (!loggedIn) { %>
-        </li>  
         <li class="nav-item">
-          <a class="nav-link" href="https://www.greencycle.ga/auth/google">Login</a>
+          <button type="button" class="btn b" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Login
+          </button>
+          <a class="btn btn-outline-light" role="button" href="https://www.greencycle.ga/auth/google">Login</a>
         </li>
     
         <% } else  { %>
@@ -66,7 +68,7 @@
         </li>
         <% } %>
   
-      </ul>     
+      </ul>
     </div>
   </nav>
   
