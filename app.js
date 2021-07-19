@@ -8,6 +8,7 @@ const layouts = require("express-ejs-layouts");
 const cors = require('cors');
 const axios = require('axios');
 
+
 const mongodb_URI = 'mongodb+srv://tjhickey:odxtMt4dmXyf7lxx@cluster0.8gabi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 const dbURL = mongodb_URI
 mongoose.connect(dbURL,{ useUnifiedTopology: true })
@@ -26,6 +27,8 @@ const authRouter = require('./routes/authentication');
 const isLoggedIn = authRouter.isLoggedIn
 
 var app = express();
+
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
