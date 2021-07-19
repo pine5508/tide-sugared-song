@@ -37,7 +37,7 @@
     </select>
   </div>
   <div class="col-2">
-    <label for="zip" class="form-label">Zip</label>
+    <label for="zip" class="form-label">Zip Code</label>
     <input type="text" class="form-control" id="zip" name="zip" placeholder="00000">
   </div>
   <div class="col-12">
@@ -77,7 +77,7 @@
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Recycle/Upcycle:  <%= location.reupcycle %></li>
-          <li class="list-group-item">Address:  <%= location.city %></li>
+          <li class="list-group-item">Address: <%= location.address1 %>, <%= location.address2 %>, <%= location.city %>, <%= location.state %> <%= location.zip %></li>
           <li class="list-group-item">Phone Number: <%= location.phone %></li>
           <li class="list-group-item">Hours: <%= location.hrs %></li>
           <li class="list-group-item">CreatedAt: <%= location.createdAt %></li>
