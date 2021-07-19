@@ -316,6 +316,11 @@ app.get('/purpose',
       })
 
 
+app.get('/infoPage',
+    (req,res) => {
+      res.render('infoPage')
+    })
+
 const CommentForGerardo = require('./models/CommentForGerardo')  // this is the schema for CommentsForGerardo
 
 //app.get('/bio/Gerardo', (req,res)=>res.render('bioGerardo'));
