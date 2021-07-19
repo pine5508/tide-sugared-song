@@ -56,25 +56,27 @@ app.use(cors());
 
 /* ******************* Route for the main pages *********************/
 
-
-app.get('/', (req,res)=>res.render('index'));
-//app.use('/users', usersRouter);
+app.get('/', (req,res)=>res.render('index'))
 
 app.get('/about',(req,res) => res.render('about'))
 
+app.get('/blog',(req,res) => res.render('blog'))
+
 app.get('/feedback',(req,res) => res.render('feedback'))
 
-app.get('/purpose', (req,res)=>res.render('purpose'));
+app.get('/mission', (req,res)=>res.render('mission'))
 
-app.get('/profile', (req,res)=>res.render('profile'));
+app.get('/profile', (req,res)=>res.render('profile'))
 
-app.get('/locBoston', (req,res)=>res.render('locBoston'));
+app.get('/locBoston', (req,res)=>res.render('locBoston'))
 
-app.get('/locChicago', (req,res)=>res.render('locChicago'));
+app.get('/locChicago', (req,res)=>res.render('locChicago'))
 
-app.get('/locHouston', (req,res)=>res.render('locHouston'));
+app.get('/locHouston', (req,res)=>res.render('locHouston'))
 
-app.get('/locIslamabad', (req,res)=>res.render('locIslamabad'));
+app.get('/locIslamabad', (req,res)=>res.render('locIslamabad'))
+
+
 
 const CommentForRahma = require('./models/CommentForRahma')  // this is the schema for CommentsForTim
 
@@ -294,32 +296,6 @@ app.post('/addCommentForSasha',
       next(error)
     }
 })
-
-app.get('/locChicago',
-    (req,res) => {
-      res.render('locChicago')
-    })
-
-
-app.get('/locIslamabad',
-    (req,res) => {
-      res.render('locIslamabad')
-    })
-app.get('/locHouston',
-        (req,res) => {
-      res.render('locHouston')
-      })
-
-app.get('/purpose',
-        (req,res) => {
-      res.render('purpose')
-      })
-
-
-app.get('/infoPage',
-    (req,res) => {
-      res.render('infoPage')
-    })
 
 const CommentForGerardo = require('./models/CommentForGerardo')  // this is the schema for CommentsForGerardo
 
