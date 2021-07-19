@@ -5,13 +5,13 @@
     </div>
 <hr>
 
-<div class="col bg-success text-light">
+<div class="col text-dark">
   <h4>
     I am a rising sophomore in Massachusetts taking the course in summer 2021. 
     I am know english and marathi, and am learning spanish, which makes me trilingual.
   </h4>
 </div>
-<div class="col bg-dark text-light">
+<div class="col text-dark">
   <h1>
     Favorites:
   </h1>
@@ -41,49 +41,49 @@ email: rohankelkar@brandeis.edu
 
 <%} else {%> 
 
-  <hr>
-<div>
-  <div class="row">
-    <div class="col">
-      <h2>Leave a Comment</h2>
-      <form method="post" action="/addCommentForRohan">
-        <div class="row mb-3">
-          <div class="col">
-            <input type="text" class="form-control" name="title" placeholder="Title">
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" name="rating" placeholder="Rating (1-10)">
-          </div>
-        </div>
-        <div class="mb-3">
-          <textarea class="form-control" name="text" rows="2" placeholder="Type something..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary mb-3">Submit</button>
-      </form>
-    </div>
-    <div class="col">
-      <h2>Comments</h2>
-      <ul>
-        <% comments.forEach(comment => { %>
-        <li>
-          <%= comment.title %> <i><%= comment.createdAt %></i>
-          <br>
-          <%= comment.text %>
-          <br>
-          Rating: <%= comment.rating %>
-        </li>
-        <% }) %>
-      </ul>
-    <% if (loggedIn) {%>
-      <% if (['rohankelkar@brandeis.edu','tjhickey@brandeis.edu', 'joungwon04@brandeis.edu'].includes(user.googleemail)) { %>
-      <div style="color:red">
-          <pre><%= JSON.stringify(comments,null,5) %></pre>
-      </div>
-    </div>
-  </div>
-</div>
+  <form method="post" action="/addCommentForRohan">
+    Title: 
+    <br>
+    <input type="text" name="title" size="40" placeholder="summarize in a few words">
+    <br>
+    <br>
+    Rating: 
+    <br>
+    <input type="number" name="rating" placeholder="rating from 1-10"></input>
+    <br>
+    <br>
+    What do you think?
+  <br>
+      <textarea name="text" cols="40" placeholder="what do you think of my bio page?"></textarea>
+    <br>
+    <input type="submit" class="btn btn-warning" value="Submit comment">
+  </form>
 
 <%}%>
+
+
+<h2>
+  Comments from previous visitors
+</h2>
+
+  
+<!-- here is where we show all of the comments in a list -->
+<ul>
+  <!-- here is how we iterate over all comments in the database! -->
+  
+  <% comments.forEach(comment => { %> 
+   
+    <li> 
+         <%= comment.title %> <i> <%= comment.createdAt %></i>
+         <br>
+         <%= comment.text %>
+      <br>
+          Rating: <%= comment.rating %>
+   </li>
+  
+  <% }) %>
+  
+</ul>
 
 
 
@@ -92,6 +92,11 @@ email: rohankelkar@brandeis.edu
 <% if (loggedIn) {%>
   <% if (['rohankelkar@brandeis.edu','tjhickey@brandeis.edu', 'joungwon04@brandeis.edu'].includes(user.googleemail)) { %>
   <div style="color:red">
+
+    <h6>
+      The rest of this page is just for the developers!<br>
+      Everyone else can ignore this!
+    </h6>
 
     Here are the comments in raw JSON form:
     <pre>
