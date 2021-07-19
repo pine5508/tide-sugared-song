@@ -375,7 +375,7 @@ const Feedback = require('./models/Feedback')  // this is the schema for Feedbac
 app.get('/feedback',
     async (req,res,next) => {
     try {
-      res.locals.feedback = 
+      res.locals.feedbacks = 
         await Feedback
                  .find({}) // get all the comments
                  .sort({createdAt:-1})  // sort by creation date descending, most recent first
@@ -397,7 +397,7 @@ app.post('/feedback',
           userId: req.user._id,      // they have to be logged in to leave a comment
         })
     
-      await location.save()
+      await feedback.save()
 
       res.redirect('/feedback')
       

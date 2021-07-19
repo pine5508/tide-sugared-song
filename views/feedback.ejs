@@ -18,3 +18,13 @@
 </div>
 
 <% } %>
+
+<% if (loggedIn) {%>
+  <% if (['rohankelkar@brandeis.edu','tjhickey@brandeis.edu', 'joungwon04@brandeis.edu'].includes(user.googleemail)) { %>
+  
+  <div>
+  </div>
+  <pre><%= JSON.stringify(feedbacks,null,5) %></pre>
+
+  <% } %>
+<% } %>
