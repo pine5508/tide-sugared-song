@@ -8,14 +8,7 @@ const layouts = require("express-ejs-layouts");
 const cors = require('cors');
 const axios = require('axios');
 
-
-
-// here is where we connect to the database
-
-//const mongodb_URI = 'mongodb+srv://tjhickey:LTsmcRCGW3c99b@cluster0.8gabi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-//const mongodb_URI =   'mongodb+srv://tjhickey:WcaLKkT3JJNiN8dX@cluster0.kgugl.mongodb.net/atlasAuthDemo?retryWrites=true&w=majority' //process.env.MONGODB_URI
 const mongodb_URI = 'mongodb+srv://tjhickey:odxtMt4dmXyf7lxx@cluster0.8gabi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-
 const dbURL = mongodb_URI
 mongoose.connect(dbURL,{ useUnifiedTopology: true })
 
@@ -32,18 +25,10 @@ const ToDoItem = require('./models/ToDoItem')
 const authRouter = require('./routes/authentication');
 const isLoggedIn = authRouter.isLoggedIn
 
+var app = express();
 
-var app = express();  // this is the express server itself!
-
-
-/* the next 10 lines set up the server
-   so it can handle authentication and other features
-*/
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -54,35 +39,22 @@ app.use(authRouter)
 app.use(cors());
 
 
-/* ******************* Route for the main pages *********************/
-
+//Routes for main pages
 app.get('/', (req,res)=>res.render('index'))
-
 app.get('/about',(req,res) => res.render('about'))
-
 app.get('/blog',(req,res) => res.render('blog'))
-
 app.get('/feedback',(req,res) => res.render('feedback'))
-
 app.get('/mission', (req,res)=>res.render('mission'))
-
 app.get('/profile', (req,res)=>res.render('profile'))
-
 app.get('/locBoston', (req,res)=>res.render('locBoston'))
-
 app.get('/locChicago', (req,res)=>res.render('locChicago'))
-
 app.get('/locHouston', (req,res)=>res.render('locHouston'))
-
 app.get('/locIslamabad', (req,res)=>res.render('locIslamabad'))
-
 app.get('/locTest', (req,res)=>res.render('locTest'))
 
 
+const CommentForRahma = require('./models/CommentForRahma') 
 
-const CommentForRahma = require('./models/CommentForRahma')  // this is the schema for CommentsForTim
-
-//app.get('/bio/Tim', (req,res)=>res.render('bioTim'));
 
 //we have to find all of the most recent comments to show them on the bio page
 app.get('/bio/Rahma', 
@@ -556,57 +528,6 @@ app.get("/recipeById/:mealId",
     }
 }
  )     
-
-/* ******************* Pomodoros *************/
-const Pomodoro = require('./models/Pomodoro')
-
-app.get('/pomodoros',isLoggedIn,
-  async (req,res,next) => {
-   try{
-    res.locals.pomodoros = await Pomodoro.find({userId:req.user._id})
-    res.render('pomodoros')
-   } catch(e) {
-     next(e)
-   }
-  }
-)
-
-app.post('/pomodoros',
-  isLoggedIn,
-  async (req,res,next) => {
-   try {
-
-    const pomdata = {
-      goal:req.body.goal,
-      result:req.body.result,
-      completedAt: req.body.completedAt,
-      startedAt: req.body.startedAt,
-      userId: req.user._id,
-    }
-    const newPomodoro = new Pomodoro(pomdata)
-    await newPomodoro.save()
-
-    res.redirect('/pomodoros')
-   } catch(e){
-     console.log("Error in pomodoros"+e)
-     next(e)
-   }
-  }
-)
-
-app.get('/pomodoros/clear',isLoggedIn,
-  async (req,res,next) => {
-   try {
-    await Pomodoro.deleteMany({userId:req.user._id})
-    res.redirect('/pomodoros')
-   } catch(e) {
-     next(e)
-   }
-  }
-)
-
-/* *************** User Profiles ****************/
-
 
 
 app.get('/profiles',
