@@ -542,17 +542,17 @@ app.use('/publicprofile/:userId',
 )
 
 
-app.get('/profile',
-    isLoggedIn,
-    (req,res) => {
-      res.render('profile')
-    })
+// app.get('/profile',
+//     isLoggedIn,
+//     (req,res) => {
+//       res.render('profile')
+//     })
 
 app.get('/profile',
     isLoggedIn,
-    (req,res) => res.render('editProfile'))
+    (req,res) => res.render('profile'))
 
-app.post('/editProfile',
+app.post('/editYourProfile',
     isLoggedIn,
     async (req,res,next) => {
       try {
@@ -626,9 +626,6 @@ app.get('/todo/switchComplete/:itemId',
       next(e)
     }
 });
-
-
-
 
 
 // catch 404 and forward to error handler
