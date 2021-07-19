@@ -76,6 +76,8 @@ app.get('/locHouston', (req,res)=>res.render('locHouston'))
 
 app.get('/locIslamabad', (req,res)=>res.render('locIslamabad'))
 
+app.get('/locTest', (req,res)=>res.render('locTest'))
+
 
 
 const CommentForRahma = require('./models/CommentForRahma')  // this is the schema for CommentsForTim

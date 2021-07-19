@@ -1,7 +1,14 @@
+<script>
+  var myModal = document.getElementById('myModal')
+  var myInput = document.getElementById('myInput')
+
+  myModal.addEventListener('shown.bs.modal', function () {
+    myInput.focus()
+  })
+</script>
+
 <div>
-  <h1>
-    Recycling / Upcycling Resources for Boston, MA
-  </h1>
+  <h1>Test</h1>
 </div>
 
 <div class="overflow-hidden">
@@ -22,6 +29,9 @@
         </ul>
         <div class="card-body">
           <a href="https://www.watertowndpw.org/169/Trash-Recycling" class="btn btn-success">Visit Website</a>
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Modal
+          </button>
         </div>
       </div>
     </div>
@@ -65,23 +75,22 @@
         </div>
       </div>
     </div>
-    <div class="col-4">
-      <div class="card">
-        <img src="https://recyclingworksma.com/wp-content/uploads/2019/04/RecyclingWorks-Massachusetts-logo-200x150.png" class="card-img-top" alt="image...">
-        <div class="card-body">
-          <h4 class="card-title">Recycling Works MA</h4>
-          <p class="card-text">
-            Recycling Works MA can help buisnesses and institutions recycle specific materials such as batteries or food waste.
-          </p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Address:</li>
-          <li class="list-group-item">Phone Number: (585) 584-3124</li>
-          <li class="list-group-item">Hours:</li>
-        </ul>
-        <div class="card-body">
-          <a href="https://recyclingworksma.com/recycler/empire-zero-llc/" class="btn btn-success">Visit Website</a>
-        </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">Visit #</button>
       </div>
     </div>
   </div>
