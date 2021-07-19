@@ -374,13 +374,17 @@ app.post('/addLocation',
     try {
       const location = 
         new Location({
-          namePlace:req.body.namePlace,
+          name:req.body.name,
           reupcycle:req.body.reupcycle,
           address1:req.body.address1,
           address2:req.body.address2,
           city:req.body.city, 
           state:req.body.state,
           zip:req.body.zip,
+          imgURL:req.body.imgURL,
+          details:req.body.details, 
+          phone:req.body.phone,
+          hrs:req.body.hrs,
           createdAt: new Date(),
           userId: req.user._id,      // they have to be logged in to leave a comment
         })

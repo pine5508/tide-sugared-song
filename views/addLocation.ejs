@@ -5,8 +5,8 @@
 
 <form class="row g-3" method="post" action="/addLocation">
   <div class="col-10">
-    <label for="namePlace" class="form-label">Name this place</label>
-    <input type="text" class="form-control" id="namePlace" name="namePlace">
+    <label for="name" class="form-label">Name this place</label>
+    <input type="text" class="form-control" id="name" name="name">
   </div>
   <div class="col-2">
     <label for="reupcycle" class="form-label">Recycle / Upcycle</label>
@@ -41,12 +41,20 @@
     <input type="text" class="form-control" id="zip" name="zip" placeholder="00000">
   </div>
   <div class="col-12">
-    <label for="imageURL" class="form-label">Image URL</label>
-    <input type="text" class="form-control" id="imageURL" name="imageURL">
+    <label for="imgURL" class="form-label">Image URL</label>
+    <input type="text" class="form-control" id="imgURL" name="imgURL">
   </div>
   <div class="col-12">
     <label for="details" class="form-label">Details</label>
     <textarea class="form-control" id="details" name="details" rows="2" placeholder="Type some details in..."></textarea>
+  </div>
+  <div class="col-6">
+    <label for="phone" class="form-label">Phone Number</label>
+    <input type="text" class="form-control" id="phone" name="phone" placeholder="000-1234-5678">
+  </div>
+  <div class="col-6">
+    <label for="hrs" class="form-label">Operation Hours</label>
+    <input type="text" class="form-control" id="hrs" name="hrs" placeholder="Mon-Fri, 9am-7pm">
   </div>
   <div class="col-1">
     <button type="submit" class="btn btn-success">Submit</button>
@@ -55,32 +63,23 @@
 
 <hr>
 
-<ul>
-  
-
 <!-- here is how we iterate over all locations in the database! -->
-
     
-  <div class="overflow-hidden">
-  <div class="row gy-4">
-    
-  <% locations.forEach(location => { %> 
-
+<div class="overflow-hidden">
+  <div class="row gy-4"> 
+    <% locations.forEach(location => { %> 
     <div class="col-4">
       <div class="card">
-        <img src="https://www.watertowndpw.org/ImageRepository/Document?documentID=279" class="card-img-top" alt="image...">
+        <img src="<%= location.imgURL %>" class="card-img-top" alt="image...">
         <div class="card-body">
-          <h4 class="card-title"> <%= location.namePlace %> </h4>
-          <p class="card-text">
-            <i> </i>
-            <%= location.reupcycle %>
-            At the Recycle Center, you can recycle clothes or any type of textile.
-          </p>
+          <h4 class="card-title"><%= location.name %></h4>
+          <p class="card-text"><%= location.details %></p>
         </div>
         <ul class="list-group list-group-flush">
+          <li class="list-group-item">Recycle/Upcycle:  <%= location.reupcycle %></li>
           <li class="list-group-item">Address:  <%= location.city %></li>
-          <li class="list-group-item">Phone Number: 617-972-6420</li>
-          <li class="list-group-item">Hours: Friday and Saturday 9am-4pm</li>
+          <li class="list-group-item">Phone Number: <%= location.phone %></li>
+          <li class="list-group-item">Hours: <%= location.hrs %></li>
           <li class="list-group-item">CreatedAt: <%= location.createdAt %></li>
         </ul>
         <div class="card-body">
@@ -88,22 +87,17 @@
         </div>
       </div>
     </div>
-    
-  
-  <% }) %>
-    
-    </div>
+    <% }) %>
   </div>
-  
-</ul>
+</div>
 
 <% if (loggedIn) {%>
   <% if (['rohankelkar@brandeis.edu','tjhickey@brandeis.edu', 'joungwon04@brandeis.edu'].includes(user.googleemail)) { %>
-    <div>
-      <h1>Developers only</h1>
-    <pre><%= JSON.stringify(locations,null,5) %></pre>
-</div>
-      
+  
+  <div>
+    <h1>Developers only</h1>
+  </div>
+  <pre><%= JSON.stringify(locations,null,5) %></pre>
 
   <% } %>
 <% } %>
