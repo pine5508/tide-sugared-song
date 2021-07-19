@@ -420,9 +420,9 @@ app.post('/RahmaMadlib',
   res.render('madlibRahma')
 })
 
-app.post('/rohanMadLib', isLoggedIn, (req,res) => {
+app.post('/RohanMadLib', isLoggedIn, (req,res) => {
   res.locals.body = req.body
-  res.render('madibRohan')
+  res.render('madlibRohan')
 })
 
 app.post('/sashaMadlib',
