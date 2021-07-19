@@ -1,34 +1,21 @@
+<script>
+  var myModal = document.getElementById('myModal')
+  var myInput = document.getElementById('myInput')
+
+  myModal.addEventListener('shown.bs.modal', function () {
+    myInput.focus()
+  })
+</script>
+
 <div class="d-flex justify-content-between">
   <div>
-    <img src="https://cdn.glitch.com/65fc1e7e-433e-47d3-a141-b98d44283730%2FPXL_20210720_021453064.jpg?v=1626714965447" style="width: 50px; height: 50px; overflow: hidden;" alt="Profile Picture">
+    <img src="<%= user.pfpURL %>" style="width: 50px; height: 50px; overflow: hidden;" alt="Profile Picture">
     <h1>Welcome, <%= user.googlename %></h1>
   </div>
   <div>
     <a href="/editProfile" class="btn btn-success">Edit</a>
   </div>
 </div>
-
-
-  <table class="table">
-      <tbody>
-        <tr>
-          <td>googlename</td>
-          <td><%= user.googlename %> </td>
-        </tr>
-        <tr>
-          <td>googleemail</td>
-          <td><%= user.googleemail %> </td>
-        </tr>
-        <tr>
-          <td>username</td>
-          <td><%= user.username %> </td>
-        </tr>
-        <tr>
-          <td>age</td>
-          <td><%= user.age %> </td>
-        </tr>
-      </tbody>
-    </table>
 
 <form>
   <div class="row mb-3">
@@ -52,5 +39,36 @@
       <input type="text" class="form-control" id="age" value="<%= user.age %>" readonly>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
+  <div class="row mb-3">
+    <label for="quote" class="col-2 col-form-label">Quote</label>
+    <div class="col-10">
+      <blockquote class="blockquote form-control" id="quote">
+        <p><%= user.quote %></p>
+      </blockquote>
+    </div>
+  </div>
 </form>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Edit Profile
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>

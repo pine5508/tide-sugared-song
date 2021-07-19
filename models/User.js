@@ -11,7 +11,7 @@ var userSchema = Schema( {
   googleemail:String,
   username:String,
   age:String,
-  imageURL: String,
+  pfpURL: String,
   quote: String,
 } );
 

@@ -653,7 +653,7 @@ app.post('/editProfile',
       try {
         req.user.username = req.body.username
         req.user.age = req.body.age
-        req.user.imageURL = req.body.imageURL
+        req.user.pfpURL = req.body.pfpURL
         req.user.quote = req.body.quote
         await req.user.save()
         res.redirect('/profile')
