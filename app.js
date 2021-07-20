@@ -269,6 +269,8 @@ const Location = require("./models/Location"); // this is the schema for Locatio
 
 app.get("/addLocation", async (req, res, next) => {
   try {
+    
+    res.locals.placeID = "unknown placeID"
     res.locals.locations = await Location.find({}) // get all the comments
       .sort({ createdAt: -1 }) // sort by creation date descending, most recent first
       .limit(10); // show only the last 10 comments
@@ -285,6 +287,7 @@ app.post("/addLocation", isLoggedIn, async (req, res, next) => {
       const result = await axios.get(url)
       const placeID=result.data.candidates
       res.locals.placeID= placeID
+      console.log(`placeID=${placeID}`)
     
     const location = new Location({
       name: req.body.name,
