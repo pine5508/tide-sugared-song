@@ -1,10 +1,17 @@
 <div>
   <div class="text-start">
     <center>
-    <div class="image-cropper">
-      <img src="<%= user.pfpURL %>" alt="Profile Picture">
+    <div>
+      <img src="<%= user.pfpURL %>" alt="Profile Picture" class="rounded-corners">
     </div>
     </center>
+    <style>
+img.rounded-corners {
+  border-radius: 50%;
+  width:20%;
+  length:18%;
+}
+  </style>
     <h1>Welcome, <%= user.googlename %></h1>
   </div>
 </div>
@@ -44,12 +51,7 @@
   </button>
 </form>
 
-<style>
-  .image-cropper {
-border-radius: 50%;
-    
-}
-  </style>
+
 
 
 <!-- Edit Profile Modal -->
