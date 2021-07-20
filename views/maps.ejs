@@ -2,55 +2,70 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <style>
-    #map {
-      height: 400px;
-      width: 100%;
-    }
-  </style>
-</head>
+
 <title>Google Maps API</title>
 
 <body>
   <h3>Google Maps Demo</h3>
+  <div id="map-canvas"></div>
+<div id="opening-hours"></div>
   <script>
-    function initMap() {
-      var uluru = {
-        lat: <%=lat%>,
-        lng: <%=lng%>
-      };
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14,
-        center: uluru
+    function initialize() {
+      var map = new google.maps.Map(document.getElementById('map-canvas'), {
+          center: new google.maps.LatLng(0, 0),
+          zoom: 15
       });
 
-      var infowindow = new google.maps.InfoWindow();
       var service = new google.maps.places.PlacesService(map);
 
       service.getDetails({
-        placeId: "<%=place_id%>"
-      }, function(place, status) {
-        console.log(place);
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          var marker = new google.maps.Marker({
-            map: map,
-            position: place.geometry.location
-          });
-          google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent(
-              '<div><strong>' + place.name + '</strong><br>' +
-              'Place ID: ' + place.place_id + '<br>' +
-              place.formatted_address + '<br>' +
-              "Rating : " + place.rating + '</div>');
-            infowindow.open(map, this);
-          });
-        }
+          placeId: 'ChIJod7tSseifDUR9hXHLFNGMIs'
+      }, function (place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+
+              // Create marker
+              var marker = new google.maps.Marker({
+                  map: map,
+                  position: place.geometry.location
+              });
+
+              // Center map on place location
+              map.setCenter(place.geometry.location);
+
+              // Get DIV element to display opening hours
+              var opening_hours_div = document.getElementById("opening-hours");
+
+              // Loop through opening hours weekday text
+              for (var i = 0; i < place.opening_hours.weekday_text.length; i++) {
+
+                  // Create DIV element and append to opening_hours_div
+                  var content = document.createElement('div');
+                  content.innerHTML = place.opening_hours.weekday_text[i];
+                  opening_hours_div.appendChild(content);
+              }
+          }
       });
+  }
+  initialize();
   </script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.API_KEY%>&libraries=places&callback=initMap">
-  </script>
-  
+
+  <style>
+    body {
+      font-family: Arial;
+      font-size: 10px;
+  }
+  #map-canvas {
+      height: 400px;
+  }
+  #opening-hours {
+      margin: 5px 0;
+      padding: 5px;
+      border: 1px solid grey;
+  }
+  #opening-hours div {
+      padding: 5px 0;
+  }
+  </style>
 
 </body>
 
