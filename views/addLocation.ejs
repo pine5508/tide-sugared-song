@@ -73,17 +73,18 @@
         <img src="<%= location.imgURL %>" class="card-img-top" alt="image...">
         <div class="card-body">
           <h4 class="card-title"><%= location.name %></h4>
-          <p class="card-text"><%= location.details %></p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Recycle/Upcycle:  <%= location.reupcycle %></li>
           <li class="list-group-item">Address: <%= location.address1 %>, <%= location.address2 %>, <%= location.city %>, <%= location.state %> <%= location.zip %></li>
           <li class="list-group-item">Phone Number: <%= location.phone %></li>
           <li class="list-group-item">Hours: <%= location.hrs %></li>
-          <li class="list-group-item">CreatedAt: <%= location.createdAt %></li>
         </ul>
         <div class="card-body">
           <a href="https://www.watertowndpw.org/169/Trash-Recycling" class="btn btn-success">Visit Website</a>
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#detailsModal">
+            Details
+          </button>
         </div>
       </div>
     </div>
@@ -101,3 +102,22 @@
 
   <% } %>
 <% } %>
+
+<!-- Details Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="detailsModalLabel">Title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p class="card-text"><%= location.details %></p>
+        <p class="card-text">Created <%= location.createdAt %></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success">Visit #</button>
+      </div>
+    </div>
+  </div>
+</div>
