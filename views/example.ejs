@@ -1,32 +1,57 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Place ID Finder</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script src="./index.js"></script>
-  </head>
-  <body>
-    <div >
-      <input
-        id="pac-input"
-        class="controls"
-        type="text"
-        placeholder="Enter a location"
-      />
-      
-    </div>
-    <div id="map"></div>
-    <div id="infowindow-content">
-      <span id="place-name" class="title"></span><br />
-      <strong>Place ID:</strong> <span id="place-id"></span><br />
-      <span id="place-address"></span>
-    </div>
 
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=places&v=weekly"
-      async
-    ></script>
-  </body>
+<head>
+  <style>
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+  </style>
+</head>
+<title>Google Maps API</title>
+
+<body>
+  <h3>Google Maps Demo</h3>
+  <script>
+    function initMap() {
+      var uluru = {
+        lat: <%=lat%>,
+        lng: <%=lng%>
+      };
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: uluru
+      });
+
+      var infowindow = new google.maps.InfoWindow();
+      var service = new google.maps.places.PlacesService(map);
+
+      service.getDetails({
+        placeId: "<%=place_id%>"
+      }, function(place, status) {
+        console.log(place);
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          var marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(
+              '<div><strong>' + place.name + '</strong><br>' +
+              'Place ID: ' + place.place_id + '<br>' +
+              place.formatted_address + '<br>' +
+              "Rating : " + place.rating + '</div>');
+            infowindow.open(map, this);
+          });
+        }
+      });
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.API_KEY%>&libraries=places&callback=initMap">
+  </script>
+  <div id="map"></div>
+
+</body>
+
 </html>

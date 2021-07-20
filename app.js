@@ -55,7 +55,16 @@ app.get('/locHouston', (req,res)=>res.render('locHouston'))
 app.get('/locIslamabad', (req,res)=>res.render('locIslamabad'))
 app.get('/locTest', (req,res)=>res.render('locTest'))
 app.get('/contributions', (req,res)=>res.render('contributions'))
-app.get('/example', (req,res)=>res.render('example'))
+
+
+app.get("/", function(req, res) {
+  res.render("example.ejs", {
+    place_id: "ChIJN1t_tDeuEmsRUsoyG83frY4",
+    lat: -33.8666199,
+    lng: 151.1958527
+  });
+});
+
 
 
 const CommentForRahma = require('./models/CommentForRahma') 
