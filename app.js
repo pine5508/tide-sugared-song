@@ -126,7 +126,7 @@ app.post("/addCommentForRohan", isLoggedIn, async (req, res, next) => {
 
 app.get("/bio/rohan/delete/:commentId", isLoggedIn, async (req, res, next) => {
   try {
-    await Comments.deleteOne({_id:req.params.commentId});
+    await comment.deleteOne({_id:req.params.commentId});
     res.redirect("/bio/rohan");
   } catch (e) {
     next(e);
