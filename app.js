@@ -57,8 +57,8 @@ app.get('/locTest', (req,res)=>res.render('locTest'))
 app.get('/contributions', (req,res)=>res.render('contributions'))
 
 
-app.get("/", function(req, res) {
-  res.render("example.ejs", {
+app.get("/maps", function(req, res) {
+  res.render('maps', {
     place_id: "ChIJN1t_tDeuEmsRUsoyG83frY4",
     lat: -33.8666199,
     lng: 151.1958527
