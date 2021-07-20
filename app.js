@@ -3,11 +3,11 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-var md5 = require('md5');
 const mongoose = require("mongoose");
 const layouts = require("express-ejs-layouts");
 const cors = require("cors");
 const axios = require("axios");
+const crypto = require("crypto");
 
 const mongodb_URI =
   "mongodb+srv://tjhickey:odxtMt4dmXyf7lxx@cluster0.8gabi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
@@ -280,11 +280,12 @@ app.get("/addLocation", async (req, res, next) => {
 
 app.post("/addLocation", isLoggedIn, async (req, res, next) => {
   try {
-       const url =
+       const url=
  "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=AIzaSyCC8wv4Af0tkNV13Wliy1gWX39fLrLXub4&input="+req.body.name+"&inputtype=textquery"
       const result = await axios.get(url)
-      const placeID=result.data
-       res.locals.placeID= placeID
+      const placeID=result.data.candidates
+      res.locals.placeID= placeID
+    
     const location = new Location({
       name: req.body.name,
       reupcycle: req.body.reupcycle,
