@@ -5,9 +5,9 @@
 <br>
 
 <% if (loggedIn) { %>
-<form class="row g-3" method="post" action="/feedback">
+<form class="row g-3" method="post" action="/addFeedBack">
   <div class="mb-3">
-    <textarea class="form-control" id="feedback" rows="8" placeholder="What can we improve on?"></textarea>
+    <textarea class="form-control" id="feedback" name="feedback" rows="8" placeholder="What can we improve on?"></textarea>
   </div>
   <div class="col-12">
     <button type="submit" class="btn btn-success">Submit</button>
@@ -18,23 +18,10 @@
 <div class="alert alert-danger" role="alert">
   You have to be logged in to leave feedback.
 </div>
-
 <% } %>
 
-<% feedbacks.forEach(feedback => { %> 
-<ul>
-  <% comments.forEach(comment => { %> 
-   
-    <li> 
-         <%= comment.title %> <i> <%= comment.createdAt %></i>
-         <br>
-         <%= comment.text %>
-      <br>
-          Rating: <%= comment.rating %>
-   </li>
-  
-  <% }) %>
-  
-</ul>
-
-<pre><%= JSON.stringify(feedbacks,null,5) %></pre>
+<div>
+   <pre>
+    <%= JSON.stringify(feedbacks) %>
+    </pre>
+</div>

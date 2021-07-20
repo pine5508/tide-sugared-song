@@ -378,16 +378,17 @@ const Feedback = require('./models/Feedback')  // this is the schema for Feedbac
 app.get('/feedback', isLoggedIn,
     async (req,res,next) => {
     try {
-      res.locals.feedbacks= await Feedback.find({}) // get all the comments
+      res.locals.feedbacks= 
+        await Feedback.find({}) // get all the comments
                  // .sort({createdAt:-1})  // sort by creation date descending, most recent first
-                 // .limit(10) // show only the last 10 comments
+                 .limit(10) // show only the last 10 comments
       res.render('feedback')
     } catch(error){
       next(error)
     }
 })
 
-app.post('/feedback', 
+app.post('/addFeedBack', 
          isLoggedIn,
   async (req,res,next) => {
     try {
@@ -397,7 +398,7 @@ app.post('/feedback',
           createdAt: new Date(),
           userId: req.user._id,      // they have to be logged in to leave a comment
         })
-      const result=await feedback.save()
+      await feedback.save()
       res.redirect('/feedback')
       
     } catch(error){
