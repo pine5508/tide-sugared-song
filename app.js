@@ -44,7 +44,7 @@ app.use(cors());
 app.get("/", (req, res) => res.render("index"));
 app.get("/about", (req, res) => res.render("about"));
 app.get("/news", (req, res) => res.render("news"));
-app.get("/feedback", (req, res) => res.render("feedback"));
+//app.get("/feedback", (req, res) => res.render("feedback"));
 app.get("/mission", (req, res) => res.render("mission"));
 app.get("/profile", (req, res) => res.render("profile"));
 app.get("/locBoston", (req, res) => res.render("locBoston"));
@@ -338,6 +338,16 @@ app.post("/feedback", isLoggedIn, async (req, res, next) => {
     next(error);
   }
 });
+
+app.get('/feedback/delete',isLoggedIn,
+       async (req,res,next) => {
+        try {
+          await Feedback.deleteMany()
+          res.redirect('/feedback')
+        }catch(e) {
+          next(e)
+        }
+})
 
 app.post("/addLocationJSON", (req, res) => {
   res.json(req.body);
