@@ -15,8 +15,9 @@ var locationSchema = Schema( {
   details:String,
   phone:String,
   hrs:String,
-  createdAt: Date,
-  userId: ObjectId,
+  createdAt:Date,
+  userID:ObjectId,
+  placeID:String,
 } )
 
 module.exports = mongoose.model( 'Location', locationSchema );

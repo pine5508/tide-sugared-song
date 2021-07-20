@@ -468,7 +468,16 @@ app.post('/alanMadlib',
 
 
 
-
+app.get("/addLocation/json/:placeID",
+  async (req,res,next) => {
+    try {
+      const url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=AIzaSyCC8wv4Af0tkNV13Wliy1gWX39fLrLXub4&inputtype=textquery&input="+req.body.name
+      const results = await axios.get(url)
+      res.json(results.data)
+    } catch(error){
+      next(error)
+    }
+})
 
 /* ********************** RECIPE API interactions ************/
 
