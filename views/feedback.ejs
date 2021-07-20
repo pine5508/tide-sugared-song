@@ -21,13 +21,7 @@
 
 <% } %>
 
-<% if (loggedIn) {%>
-  <% if (['rohankelkar@brandeis.edu','tjhickey@brandeis.edu', 'joungwon04@brandeis.edu','siyuyang@brandeis.edu'].includes(user.googleemail)) { %>
-  
- <div>
-    <h1>Developers only</h1>
-  </div>
-  <pre><%= JSON.stringify(feedbacks,null,5) %></pre>
 
+  <% if (['rohankelkar@brandeis.edu','tjhickey@brandeis.edu', 'joungwon04@brandeis.edu','siyuyang@brandeis.edu'].includes(user.googleemail)) { %>
+  <pre><%= JSON.stringify(feedback,null,5) %></pre>
   <% } %>
-<% } %>
