@@ -393,13 +393,11 @@ app.post('/feedback',
     try {
       const feedback = 
         new Feedback({
-           feedback:req.body.feedback,
+          feedback:req.body.feedback,
           createdAt: new Date(),
           userId: req.user._id,      // they have to be logged in to leave a comment
         })
-    
-      await feedback.save()
-
+      const result=await feedback.save()
       res.redirect('/feedback')
       
     } catch(error){

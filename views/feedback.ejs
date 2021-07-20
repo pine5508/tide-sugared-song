@@ -21,7 +21,20 @@
 
 <% } %>
 
+<% feedbacks.forEach(feedback => { %> 
+<ul>
+  <% comments.forEach(comment => { %> 
+   
+    <li> 
+         <%= comment.title %> <i> <%= comment.createdAt %></i>
+         <br>
+         <%= comment.text %>
+      <br>
+          Rating: <%= comment.rating %>
+   </li>
+  
+  <% }) %>
+  
+</ul>
 
-  <% if (['rohankelkar@brandeis.edu','tjhickey@brandeis.edu', 'joungwon04@brandeis.edu','siyuyang@brandeis.edu'].includes(user.googleemail)) { %>
-  <pre><%= JSON.stringify(feedback,null,5) %></pre>
-  <% } %>
+<pre><%= JSON.stringify(feedbacks,null,5) %></pre>
