@@ -20,8 +20,13 @@
 </div>
 <% } %>
 
+
+<% feedbacks.forEach(feedback => { %>
+  <%= feedback.text %>
 <div>
    <pre>
-    <%= JSON.stringify(feedbacks) %>
+    <%= JSON.stringify(feedbacks, null, 5) %>
     </pre>
 </div>
+<% }) %>
+

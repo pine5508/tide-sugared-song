@@ -55,6 +55,7 @@ app.get('/locHouston', (req,res)=>res.render('locHouston'))
 app.get('/locIslamabad', (req,res)=>res.render('locIslamabad'))
 app.get('/locTest', (req,res)=>res.render('locTest'))
 app.get('/contributions', (req,res)=>res.render('contributions'))
+app.get('/example', (req,res)=>res.render('example'))
 
 
 const CommentForRahma = require('./models/CommentForRahma') 
@@ -388,7 +389,7 @@ app.get('/feedback', isLoggedIn,
     }
 })
 
-app.post('/addFeedBack', 
+app.post('/feedback', 
          isLoggedIn,
   async (req,res,next) => {
     try {
