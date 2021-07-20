@@ -366,7 +366,6 @@ app.post('/addLocation',
         })
     
       await location.save()
-
       res.redirect('/addLocation')
       
     } catch(error){
@@ -376,14 +375,12 @@ app.post('/addLocation',
 
 const Feedback = require('./models/Feedback')  // this is the schema for Feedback
 
-app.get('/feedback',
+app.get('/feedback', isLoggedIn,
     async (req,res,next) => {
     try {
-      res.locals.feedbacks = 
-        await Feedback
-                 .find({}) // get all the comments
-                 .sort({createdAt:-1})  // sort by creation date descending, most recent first
-                 .limit(10) // show only the last 10 comments
+      res.locals.feedbacks= await Feedback.find({}) // get all the comments
+                 // .sort({createdAt:-1})  // sort by creation date descending, most recent first
+                 // .limit(10) // show only the last 10 comments
       res.render('feedback')
     } catch(error){
       next(error)
@@ -396,7 +393,7 @@ app.post('/feedback',
     try {
       const feedback = 
         new Feedback({
-          namePlace:req.body.namePlace,
+           feedback:req.body.feedback,
           createdAt: new Date(),
           userId: req.user._id,      // they have to be logged in to leave a comment
         })

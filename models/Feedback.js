@@ -5,6 +5,8 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 var feedbackSchema = Schema( {
   feedback:String,
+  userId: ObjectId, 
+  createdAt: Date,
 } );
 
 module.exports = mongoose.model( 'Feedback', feedbackSchema );
