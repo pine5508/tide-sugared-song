@@ -93,10 +93,11 @@ email: rohankelkar@brandeis.edu
 <ul>
   <!-- here is how we iterate over all comments in the database! -->
   
-  <% comments.forEach(comment => { %> 
+  <% comments.map(comment => { %> 
    
     <li> 
-         <%= comment.title %>  <%= comment.createdAt.toLocaleString('en-US') %>
+      <a href="/bio/Rohan/delete/<%=comment.id %>">X </a> 
+         <%= comment.title %>  <%= comment.createdAt%>
          <br>
          <%= comment.text %>
       <br>
@@ -112,13 +113,15 @@ email: rohankelkar@brandeis.edu
 </div>
 
 <% if (loggedIn) {%>
-  <% if (['rohankelkar@brandeis.edu','tjhickey@brandeis.edu', 'joungwon04@brandeis.edu'].includes(user.googleemail)) { %>
-  <div style="color:red">
+  <% if ([
+     'rohankelkar@brandeis.edu',
+     'tjhickey@brandeis.edu', 
+     'joungwon04@brandeis.edu',
+     'rahmamalik@brandeis.edu',
+     'alanwang@brandeis.edu',
+     'sasharodriguez@brandeis.edu',
+     ].includes(user.googleemail)) { %>
 
-    Here are the comments in raw JSON form:
-    <pre>
-      <%= JSON.stringify(comments,null,5) %>
-    </pre>
-    <!-- the <pre> tag preserves the spacing and JSON.stringify makes it look pretty -->
-  <% } %>
-<% } %>
+<!--     <pre><%= JSON.stringify(comments,null,5) %> </pre> -->
+
+  <% }} %>

@@ -118,9 +118,18 @@ app.post("/addCommentForRohan", isLoggedIn, async (req, res, next) => {
 
     await comment.save();
 
-    res.redirect("/bio/Rohan");
+    res.redirect("/bio/rohan");
   } catch (error) {
     next(error);
+  }
+});
+
+app.get("/bio/rohan/delete/:commentId", isLoggedIn, async (req, res, next) => {
+  try {
+    await Comments.deleteOne({_id:req.params.commentId});
+    res.redirect("/bio/rohan");
+  } catch (e) {
+    next(e);
   }
 });
 
