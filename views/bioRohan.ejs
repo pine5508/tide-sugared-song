@@ -96,7 +96,7 @@ email: rohankelkar@brandeis.edu
   <% comments.forEach(comment => { %> 
    
     <li> 
-         <%= comment.title %> <i> <%= comment.createdAt %></i>
+         <%= comment.title %>  <%= comment.createdAt.toLocaleString('en-US') %>
          <br>
          <%= comment.text %>
       <br>
@@ -114,11 +114,6 @@ email: rohankelkar@brandeis.edu
 <% if (loggedIn) {%>
   <% if (['rohankelkar@brandeis.edu','tjhickey@brandeis.edu', 'joungwon04@brandeis.edu'].includes(user.googleemail)) { %>
   <div style="color:red">
-
-    <h6>
-      The rest of this page is just for the developers!<br>
-      Everyone else can ignore this!
-    </h6>
 
     Here are the comments in raw JSON form:
     <pre>

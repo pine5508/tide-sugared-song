@@ -53,9 +53,7 @@ app.get("/locHouston", (req, res) => res.render("locHouston"));
 app.get("/locIslamabad", (req, res) => res.render("locIslamabad"));
 app.get("/locTest", (req, res) => res.render("locTest"));
 app.get("/contributions", (req, res) => res.render("contributions"));
-
-app.get("/map", isLoggedIn, (req, res) => {
-  res.render("map");
+app.get("/map", isLoggedIn, (req, res) => {res.render("map");
 });
 
 const CommentForRahma = require("./models/CommentForRahma");
@@ -192,7 +190,6 @@ app.post("/addCommentForAlan", isLoggedIn, async (req, res, next) => {
 
 const CommentForSasha = require("./models/CommentForSasha"); // this is the schema for CommentsForSasha
 
-
 //we have to find all of the most recent comments to show them on the bio page
 app.get("/bio/Sasha", async (req, res, next) => {
   try {
@@ -225,7 +222,6 @@ app.post("/addCommentForSasha", isLoggedIn, async (req, res, next) => {
 });
 
 const CommentForGerardo = require("./models/CommentForGerardo"); // this is the schema for CommentsForGerardo
-
 
 //we have to find all of the most recent comments to show them on the bio page
 
@@ -269,8 +265,7 @@ const Location = require("./models/Location"); // this is the schema for Locatio
 
 app.get("/addLocation", async (req, res, next) => {
   try {
-    
-    res.locals.placeID = "unknown placeID"
+    res.locals.placeID = "unknown placeID";
     res.locals.locations = await Location.find({}) // get all the comments
       .sort({ createdAt: -1 }) // sort by creation date descending, most recent first
       .limit(10); // show only the last 10 comments
@@ -282,13 +277,15 @@ app.get("/addLocation", async (req, res, next) => {
 
 app.post("/addLocation", isLoggedIn, async (req, res, next) => {
   try {
-       const url=
- "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=AIzaSyCC8wv4Af0tkNV13Wliy1gWX39fLrLXub4&input="+req.body.name+"&inputtype=textquery"
-      const result = await axios.get(url)
-      const placeID=result.data.candidates
-      res.locals.placeID= placeID
-      console.log(`placeID=${placeID}`)
-    
+    const url =
+      "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=AIzaSyCC8wv4Af0tkNV13Wliy1gWX39fLrLXub4&input=" +
+      req.body.name +
+      "&inputtype=textquery";
+    const result = await axios.get(url);
+    const placeID = result.data.candidates;
+    res.locals.placeID = placeID;
+    console.log(`placeID=${placeID}`);
+
     const location = new Location({
       name: req.body.name,
       reupcycle: req.body.reupcycle,
@@ -304,7 +301,7 @@ app.post("/addLocation", isLoggedIn, async (req, res, next) => {
       createdAt: new Date(),
       userId: req.user._id // they have to be logged in to leave a comment
     });
-     
+
     await location.save();
     res.redirect("/addLocation");
   } catch (error) {
@@ -339,15 +336,23 @@ app.post("/feedback", isLoggedIn, async (req, res, next) => {
   }
 });
 
-app.get('/feedback/delete',isLoggedIn,
-       async (req,res,next) => {
-        try {
-          await Feedback.deleteMany()
-          res.redirect('/feedback')
-        }catch(e) {
-          next(e)
-        }
-})
+app.get("/feedback/delete", isLoggedIn, async (req, res, next) => {
+  try {
+    await Feedback.deleteMany();
+    res.redirect("/feedback");
+  } catch (e) {
+    next(e);
+  }
+});
+
+app.get("/feedback/delete/:feedbackId", isLoggedIn, async (req, res, next) => {
+  try {
+    await Feedback.deleteOne({_id:req.params.feedbackId});
+    res.redirect("/feedback");
+  } catch (e) {
+    next(e);
+  }
+});
 
 app.post("/addLocationJSON", (req, res) => {
   res.json(req.body);

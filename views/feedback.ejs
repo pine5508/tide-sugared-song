@@ -22,11 +22,24 @@
 
 
 <% if (loggedIn) {%>
-  <% if (['rohankelkar@brandeis.edu','tjhickey@brandeis.edu', 'joungwon04@brandeis.edu'].includes(user.googleemail)) { %>
+  <% if ([
+     'rohankelkar@brandeis.edu',
+     'tjhickey@brandeis.edu', 
+     'joungwon04@brandeis.edu',
+     'rahmamalik@brandeis.edu',
+     'alanwang@brandeis.edu',
+     'sasharodriguez@brandeis.edu',
+     ].includes(user.googleemail)) { %>
+
+<hr>
+
   <ul>
     
    <% feedbacks.map( feedback => {%>  
-     <li> <%= feedback.feedback %>  <%= feedback.createdAt %></li>
+     <li> 
+       <a href="feedback/delete/<%=feedback.id %>">X </a> 
+       <%= feedback.feedback %>  <%= feedback.createdAt.toLocaleString('en-US') %>
+    </li>
    <% }) %>
 </ul>
 <!-- <pre><%= JSON.stringify(feedbacks,null,5) %></pre> -->
