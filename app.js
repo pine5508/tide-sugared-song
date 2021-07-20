@@ -3,6 +3,7 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var md5 = require('md5');
 const mongoose = require("mongoose");
 const layouts = require("express-ejs-layouts");
 const cors = require("cors");
@@ -280,9 +281,10 @@ app.get("/addLocation", async (req, res, next) => {
 app.post("/addLocation", isLoggedIn, async (req, res, next) => {
   try {
        const url =
-      "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=AIzaSyCC8wv4Af0tkNV13Wliy1gWX39fLrLXub4&inputtype=textquery&input=" +
-      req.body.name;
+ "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=AIzaSyCC8wv4Af0tkNV13Wliy1gWX39fLrLXub4&input="+req.body.name+"&inputtype=textquery"
       const result = await axios.get(url)
+      const placeID=result.data
+       res.locals.placeID= placeID
     const location = new Location({
       name: req.body.name,
       reupcycle: req.body.reupcycle,
@@ -298,7 +300,7 @@ app.post("/addLocation", isLoggedIn, async (req, res, next) => {
       createdAt: new Date(),
       userId: req.user._id // they have to be logged in to leave a comment
     });
-      res.locals.placeId= result.data.candidates
+     
     await location.save();
     res.redirect("/addLocation");
   } catch (error) {
