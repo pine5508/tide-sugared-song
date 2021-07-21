@@ -53,8 +53,10 @@ app.get("/locHouston", (req, res) => res.render("locHouston"));
 app.get("/locIslamabad", (req, res) => res.render("locIslamabad"));
 app.get("/locTest", (req, res) => res.render("locTest"));
 app.get("/contributions", (req, res) => res.render("contributions"));
-app.get("/map", isLoggedIn, (req, res) => {res.render("map");
+app.get("/map", isLoggedIn, (req, res) => {res.render("maps");
 });
+
+
 
 const CommentForRahma = require("./models/CommentForRahma");
 
