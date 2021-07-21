@@ -54,6 +54,9 @@
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="modal" data-bs-target="#addLocation">Suggest a Location</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About Us</a>
+        </li>
         
         <% if (!loggedIn) { %>
         <li class="nav-item">
@@ -70,8 +73,6 @@
             <li><a class="dropdown-item" href="/contributions">My Contributions</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="/feedback">Feedback</a></li>
-            <li><a class="dropdown-item" href="/about">About Us</a></li>
-            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="/logout">Log out</a></li>
           </ul>
         </li>
@@ -81,7 +82,9 @@
     </div>
   </nav>
   
+  <div class="container-fluid p-3">
   <%- body %>
+  </div>
   
   <div class="modal fade" id="addLocation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
@@ -92,11 +95,11 @@
       </div>
       <div class="modal-body">
         <form class="row g-3" method="post" action="/addLocation">
-          <div class="col-10">
+          <div class="col-8">
             <label for="name" class="form-label">Name this place</label>
             <input type="text" class="form-control" id="name" name="name">
           </div>
-          <div class="col-2">
+          <div class="col-4">
             <label for="reupcycle" class="form-label">Type</label>
             <select id="reupcycle" name="reupcycle" class="form-select">
               <option selected>Recycle</option>
@@ -111,7 +114,7 @@
             <label for="address2" class="form-label">Address 2</label>
             <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment, studio, or floor">
           </div>
-          <div class="col-6">
+          <div class="col-4">
             <label for="city" class="form-label">City</label>
             <input type="text" class="form-control" id="city" name="city">
           </div>
@@ -124,7 +127,11 @@
               <option>NH</option>
             </select>
           </div>
-          <div class="col-2">
+          <div class="col-3">
+            <label for="country" class="form-label">Country</label>
+            <input type="text" class="form-control" id="country" name="country">
+          </div>
+          <div class="col-3">
             <label for="zip" class="form-label">Zip Code</label>
             <input type="text" class="form-control" id="zip" name="zip" placeholder="00000">
           </div>
