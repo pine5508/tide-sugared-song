@@ -60,8 +60,15 @@
 </div>
 
 <% if (loggedIn) {%>
-  <% if (['rohankelkar@brandeis.edu','tjhickey@brandeis.edu', 'joungwon04@brandeis.edu', 'rahmamalik@brandeis.edu'].includes(user.googleemail)) { %>
-  
+  <% if ([
+     'rohankelkar@brandeis.edu',
+     'tjhickey@brandeis.edu', 
+     'joungwon04@brandeis.edu',
+     'rahmamalik@brandeis.edu',
+     'alanwang@brandeis.edu',
+     'sasharodriguez@brandeis.edu',
+     ].includes(user.googleemail)) { %>
+
   <div>
     <h1>Developers only</h1>
   </div>

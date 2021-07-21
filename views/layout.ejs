@@ -96,56 +96,80 @@
       <div class="modal-body">
         <form class="row g-3" method="post" action="/addLocation">
           <div class="col-8">
-            <label for="name" class="form-label">Name this place</label>
-            <input type="text" class="form-control" id="name" name="name">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="name" name="name" placeholder="name">
+              <label for="name" class="form-label">Name this place</label>
+            </div>
           </div>
           <div class="col-4">
-            <label for="reupcycle" class="form-label">Type</label>
-            <select id="reupcycle" name="reupcycle" class="form-select">
-              <option selected>Recycle</option>
-              <option>Upcycle</option>
-            </select>
+            <div class="form-floating">
+              <select id="reupcycle" name="reupcycle" class="form-select">
+                <option selected>Recycle</option>
+                <option>Upcycle</option>
+              </select>
+              <label for="reupcycle" class="form-label">Type</label>
+            </div>
           </div>
           <div class="col-6">
-            <label for="address1" class="form-label">Address</label>
-            <input type="text" class="form-control" id="address1" name="address1" placeholder="1234 Main St">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="address1" name="address1" placeholder="1234 Main St">
+              <label for="address1" class="form-label">Address</label>
+            </div>
           </div>
           <div class="col-6">
-            <label for="address2" class="form-label">Address 2</label>
-            <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment, studio, or floor">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment, studio, or floor">
+              <label for="address2" class="form-label">Address 2</label>
+            </div>
           </div>
           <div class="col-4">
-            <label for="city" class="form-label">City</label>
-            <input type="text" class="form-control" id="city" name="city">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="city" name="city" placeholder="city">
+              <label for="city" class="form-label">City</label>
+            </div>
           </div>
           <div class="col-2">
-            <label for="state" class="form-label">State</label>
-            <select id="state" name="state" class="form-select">
-              <option selected>Choose...</option>
-              <option>MA</option>
-              <option>NY</option>
-              <option>NH</option>
-            </select>
+            <div class="form-floating">
+              <select id="state" name="state" class="form-select">
+                <option selected>Choose...</option>
+                <option>MA</option>
+                <option>NY</option>
+                <option>NH</option>
+              </select>
+              <label for="state" class="form-label">State</label>
+            </div>
           </div>
           <div class="col-3">
-            <label for="country" class="form-label">Country</label>
-            <input type="text" class="form-control" id="country" name="country">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="country" name="country" placeholder="country">
+              <label for="country" class="form-label">Country</label>
+            </div>
           </div>
           <div class="col-3">
-            <label for="zip" class="form-label">Zip Code</label>
-            <input type="text" class="form-control" id="zip" name="zip" placeholder="00000">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="zip" name="zip" placeholder="00000">
+              <label for="zip" class="form-label">Zip Code</label>
+            </div>
           </div>
           <div class="col-12">
-            <label for="imgURL" class="form-label">Image URL</label>
-            <input type="text" class="form-control" id="imgURL" name="imgURL">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="imgURL" name="imgURL" placeholder="imgURL">
+              <label for="imgURL" class="form-label">Image URL</label>
+            </div>
           </div>
           <div class="col-12">
-            <label for="imgURL" class="form-label">Website URL</label>
-            <input type="text" class="form-control" id="webURL" name="webURL">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="webURL" name="webURL" placeholder="webURL">
+              <label for="imgURL" class="form-label">Website URL</label>
+            </div>
           </div>
           <div class="col-12">
-            <label for="details" class="form-label">Details</label>
-            <textarea class="form-control" id="details" name="details" rows="2" placeholder="Type some details in..."></textarea>
+            <div class="form-floating">
+              <textarea class="form-control" id="details" name="details" rows="2" placeholder="Type some details in..."></textarea>
+              <label for="details" class="form-label">Details</label>
+            </div>
+            
+            
           </div>
           <div class="col-6">
             <label for="phone" class="form-label">Phone Number</label>
