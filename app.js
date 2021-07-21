@@ -306,6 +306,7 @@ app.post("/addLocation", isLoggedIn, async (req, res, next) => {
       state: req.body.state,
       zip: req.body.zip,
       imgURL: req.body.imgURL,
+      webIRL: req.body.webURL,
       details: req.body.details,
       phone: req.body.phone,
       hrs: req.body.hrs,
