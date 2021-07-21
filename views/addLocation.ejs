@@ -82,10 +82,37 @@
         </ul>
         <div class="card-body">
           <a href="https://www.watertowndpw.org/169/Trash-Recycling" class="btn btn-success">Visit Website</a>
-          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#detailsModal">
+          <button type="button" class="btn btn-success" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#detailsModal<%= location.id%>">
             Details
           </button>
         </div>
+        
+        <!-- Details Modal 
+              the modal has to appear in the loop so it can access the location object
+              it also has to have a unique id so we add the locaction.id to the detailsModal id name
+          -->
+          <div class="modal fade" id="detailsModal<%= location.id%>" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="detailsModalLabel">Title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                  <p class="card-text"><%= location.details %></p>
+                  <p class="card-text">Created <%= location.createdAt %></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success">Visit #</button>
+                  <a href="https://www.watertowndpw.org/169/Trash-Recycling" class="btn btn-success">Visit Website</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        
       </div>
     </div>
     <% }) %>
@@ -103,21 +130,3 @@
   <% } %>
 <% } %>
 
-<!-- Details Modal -->
-<div class="modal fade" id="detailsModal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="detailsModalLabel">Title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <p class="card-text"><%= location.details %></p>
-        <p class="card-text">Created <%= location.createdAt %></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success">Visit #</button>
-      </div>
-    </div>
-  </div>
-</div>
