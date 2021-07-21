@@ -11,13 +11,15 @@ var locationSchema = Schema( {
   city:String, 
   state:String,
   zip:String,
-  imgURL:String, 
+  imgURL:String,
+  webURL: String,
   details:String,
   phone:String,
   hrs:String,
   createdAt:Date,
   userID:ObjectId,
   placeID:String,
+  
 } )
 
 module.exports = mongoose.model( 'Location', locationSchema );
