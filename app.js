@@ -51,7 +51,9 @@ app.get("/locBoston", (req, res) => res.render("locBoston"));
 app.get("/locChicago", (req, res) => res.render("locChicago"));
 app.get("/locHouston", (req, res) => res.render("locHouston"));
 app.get("/locIslamabad", (req, res) => res.render("locIslamabad"));
-app.get("/locUser", (req, res) => res.render("locUser"));
+//app.get("/locUser", (req, res) => res.render("locUser"));
+
+
 app.get("/contributions", (req, res) => res.render("contributions"));
 app.get("/map", isLoggedIn, (req, res) => {res.render("maps");
 });
@@ -128,7 +130,7 @@ app.post("/addCommentForRohan", isLoggedIn, async (req, res, next) => {
 
 app.get("/bio/rohan/delete/:commentId", isLoggedIn, async (req, res, next) => {
   try {
-    await comment.deleteOne({_id:req.params.commentId});
+    await Comment.deleteOne({_id:req.params.commentId});
     res.redirect("/bio/rohan");
   } catch (e) {
     next(e);
@@ -274,13 +276,13 @@ const Location = require("./models/Location"); // this is the schema for Locatio
 
 //we have to find all of the most recent comments to show them on the bio page
 
-app.get("/addLocation", async (req, res, next) => {
+app.get("/locUser", async (req, res, next) => {
   try {
     res.locals.placeID = "unknown placeID";
     res.locals.locations = await Location.find({}) // get all the comments
       .sort({ createdAt: -1 }) // sort by creation date descending, most recent first
       .limit(10); // show only the last 10 comments
-    res.render("addLocation");
+    res.render("locUser");
   } catch (error) {
     next(error);
   }

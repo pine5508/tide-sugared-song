@@ -21,7 +21,6 @@
           <li class="list-group-item">Hours: <%= location.hrs %></li>
         </ul>
         <div class="card-body">
-          <a href="https://www.watertowndpw.org/169/Trash-Recycling" class="btn btn-success">Visit Website</a>
           <button type="button" class="btn btn-success" 
                   data-bs-toggle="modal" 
                   data-bs-target="#detailsModal<%= location.id%>">
@@ -45,8 +44,7 @@
                   <p class="card-text">Created <%= location.createdAt %></p>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-success">Visit #</button>
-                  <a href="https://www.watertowndpw.org/169/Trash-Recycling" class="btn btn-success">Visit Website</a>
+                  <a href="<%= location.webURL %>" class="btn btn-success">Visit Website</a>
                 </div>
               </div>
             </div>
@@ -58,8 +56,6 @@
     
     <% }) %>
     <!-- this is where the main loop ends -->
-    
-    
   </div>
 </div>
 
