@@ -52,7 +52,7 @@
       </ul>
       <ul class="navbar-nav justify-content-right">
         <li class="nav-item">
-          <a class="nav-link" href="/addLocation">Suggest a Location</a>
+          <a class="nav-link" data-bs-toggle="modal" data-bs-target="#addLocation">Suggest a Location</a>
         </li>
         
         <% if (!loggedIn) { %>
@@ -83,7 +83,128 @@
   
   <%- body %>
   
-  
+  <div class="modal fade" id="addLocation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Suggest a New Location</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3" method="post" action="/addLocation">
+          <div class="col-10">
+            <label for="name" class="form-label">Name this place</label>
+            <input type="text" class="form-control" id="name" name="name">
+          </div>
+          <div class="col-2">
+            <label for="reupcycle" class="form-label">Recycle / Upcycle</label>
+            <select id="reupcycle" name="reupcycle" class="form-select">
+              <option selected>Recycle</option>
+              <option>Upcycle</option>
+            </select>
+          </div>
+          <div class="col-6">
+            <label for="address1" class="form-label">Address</label>
+            <input type="text" class="form-control" id="address1" name="address1" placeholder="1234 Main St">
+          </div>
+          <div class="col-6">
+            <label for="address2" class="form-label">Address 2</label>
+            <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment, studio, or floor">
+          </div>
+          <div class="col-6">
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" name="city">
+          </div>
+          <div class="col-2">
+            <label for="state" class="form-label">State</label>
+            <select id="state" name="state" class="form-select">
+              <option selected>Choose...</option>
+              <option>MA</option>
+              <option>NY</option>
+              <option>NH</option>
+            </select>
+          </div>
+          <div class="col-2">
+            <label for="zip" class="form-label">Zip Code</label>
+            <input type="text" class="form-control" id="zip" name="zip" placeholder="00000">
+          </div>
+          <div class="col-12">
+            <label for="imgURL" class="form-label">Image URL</label>
+            <input type="text" class="form-control" id="imgURL" name="imgURL">
+          </div>
+          <div class="col-12">
+            <label for="details" class="form-label">Details</label>
+            <textarea class="form-control" id="details" name="details" rows="2" placeholder="Type some details in..."></textarea>
+          </div>
+          <div class="col-6">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="000-1234-5678">
+          </div>
+          <div class="col-6">
+            <label for="hrs" class="form-label">Operation Hours</label>
+            <input type="text" class="form-control" id="hrs" name="hrs" placeholder="Mon-Fri, 9am-7pm">
+          </div>
+          <div class="col-1">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+          <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Save Changes</button>
+          
+        </form>
+        
+        
+        
+        
+        
+        
+        <form method="post" action="editYourProfile">
+          <div class="row mb-3">
+            <label for="name" class="col-2 col-form-label">Name</label>
+            <div class="col-10">
+              <input type="text" class="form-control" id="name" value="<%= user.googlename %>" readonly>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="email" class="col-2 col-form-label">Email</label>
+            <div class="col-10">
+              <input type="email" class="form-control" id="email" value="<%= user.googleemail %>" readonly>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="username" class="col-2 col-form-label">Username</label>
+            <div class="col-10">
+              <div class="input-group">
+                <span class="input-group-text" id="username">@</span>
+                <input type="username" class="form-control" id="username" name="username" value="<%= user.username %>">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="age" class="col-2 col-form-label">Age</label>
+            <div class="col-10">
+              <input type="text" class="form-control" id="age" name="age" placeholder="Numbers only" value="<%= user.age %>">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="pfp" class="col-2 col-form-label">Profile Picture</label>
+            <div class="col-10">
+              <input type="text" class="form-control" id="pfp" name="pfpURL" placeholder="URLs only" value="<%= user.pfpURL %>">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="quote" class="col-2 col-form-label">Quote</label>
+            <div class="col-10">
+              <textarea class="form-control" id="quote" name="quote" rows="2" placeholder="Your quote here..."></textarea>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
   
 
 
