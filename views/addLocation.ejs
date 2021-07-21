@@ -1,3 +1,5 @@
+<!-- I fixed the modal issue this morning --Tim 7/21 -->
+
 <h1>
   Suggest a New Location
 </h1>
@@ -67,7 +69,11 @@
     
 <div class="overflow-hidden">
   <div class="row gy-4"> 
+    
+    <!-- this is the main loop that goes through all of the locations -->
     <% locations.forEach(location => { %> 
+    
+    
     <div class="col-4">
       <div class="card">
         <img src="<%= location.imgURL %>" class="card-img-top" alt="image...">
@@ -115,7 +121,11 @@
         
       </div>
     </div>
+    
     <% }) %>
+    <!-- this is where the main loop ends -->
+    
+    
   </div>
 </div>
 
