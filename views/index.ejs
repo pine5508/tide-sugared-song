@@ -1,17 +1,7 @@
-<div>
-  
+<div class="alert alert-primary alert-dismissible fade show" role="alert">
+  Welcome to Greencycle — Your one-stop handbook to locate all the recycling centers near you!
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 </div>
-<h1>Greencycle</h1>
-A full screen Google Maps embed
-<hr>
-
-  <% if (loggedIn) {%>
-You are logged in as <%= user.googlename %> <br>
-with email <%= user.googleemail %>
-  <%} else {%>
-You are not logged in yet.
-  <%}%>
- <hr>
 
 <!--
   Let's talk about the main page in the breakout rooms today ... -- Tim
@@ -84,17 +74,3 @@ You are not logged in yet.
    <a href="https://www.google.com/maps/search/Upcycling+near+me">upcycling </a>
   near your current location
 </h3>
-<!--
-Here is the old google map
--->
-<!--
-<iframe
-  width="600"
-  height="450"
-  style="border:0"
-  loading="lazy"
-  allowfullscreen
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCC8wv4Af0tkNV13Wliy1gWX39fLrLXub4&q=Space+Needle,Seattle+WA" 
->
-</iframe>
--->
