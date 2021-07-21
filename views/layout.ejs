@@ -14,11 +14,11 @@
   
   <style>
     html, body {
-    margin:0px;
+      margin: 0px;
+      height: 100%;
     }
     full {
       height: 100%;
-      width: 100%;
     }
   </style>
 </head>
@@ -40,7 +40,7 @@
             <li><a class="dropdown-item" href="/locBoston">Boston</a></li>
             <li><a class="dropdown-item" href="/locHouston">Houston</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="/locTest">Test</a></li>
+            <li><a class="dropdown-item" href="/locUser">Custom Locations</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -144,67 +144,14 @@
             <label for="hrs" class="form-label">Operation Hours</label>
             <input type="text" class="form-control" id="hrs" name="hrs" placeholder="Mon-Fri, 9am-7pm">
           </div>
-          <div class="col-1">
-            <button type="submit" class="btn btn-success">Submit</button>
-          </div>
-          <div class="modal-footer">
-        <button type="submit" class="btn btn-success">Save Changes</button>
-          
-        </form>
-        
-        
-        
-        
-        
-        
-        <form method="post" action="editYourProfile">
-          <div class="row mb-3">
-            <label for="name" class="col-2 col-form-label">Name</label>
-            <div class="col-10">
-              <input type="text" class="form-control" id="name" value="<%= user.googlename %>" readonly>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="email" class="col-2 col-form-label">Email</label>
-            <div class="col-10">
-              <input type="email" class="form-control" id="email" value="<%= user.googleemail %>" readonly>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="username" class="col-2 col-form-label">Username</label>
-            <div class="col-10">
-              <div class="input-group">
-                <span class="input-group-text" id="username">@</span>
-                <input type="username" class="form-control" id="username" name="username" value="<%= user.username %>">
-              </div>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="age" class="col-2 col-form-label">Age</label>
-            <div class="col-10">
-              <input type="text" class="form-control" id="age" name="age" placeholder="Numbers only" value="<%= user.age %>">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="pfp" class="col-2 col-form-label">Profile Picture</label>
-            <div class="col-10">
-              <input type="text" class="form-control" id="pfp" name="pfpURL" placeholder="URLs only" value="<%= user.pfpURL %>">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="quote" class="col-2 col-form-label">Quote</label>
-            <div class="col-10">
-              <textarea class="form-control" id="quote" name="quote" rows="2" placeholder="Your quote here..."></textarea>
-            </div>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success">Save Changes</button>
-        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Submit</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
   
 
 

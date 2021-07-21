@@ -51,7 +51,7 @@ app.get("/locBoston", (req, res) => res.render("locBoston"));
 app.get("/locChicago", (req, res) => res.render("locChicago"));
 app.get("/locHouston", (req, res) => res.render("locHouston"));
 app.get("/locIslamabad", (req, res) => res.render("locIslamabad"));
-app.get("/locTest", (req, res) => res.render("locTest"));
+app.get("/locUser", (req, res) => res.render("locUser"));
 app.get("/contributions", (req, res) => res.render("contributions"));
 app.get("/map", isLoggedIn, (req, res) => {res.render("maps");
 });

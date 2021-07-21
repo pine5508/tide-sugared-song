@@ -1,0 +1,75 @@
+
+<!-- here is how we iterate over all locations in the database! -->
+    
+<div class="overflow-hidden">
+  <div class="row gy-4"> 
+    
+    <!-- this is the main loop that goes through all of the locations -->
+    <% locations.forEach(location => { %> 
+    
+    
+    <div class="col-4">
+      <div class="card">
+        <img src="<%= location.imgURL %>" class="card-img-top" alt="image...">
+        <div class="card-body">
+          <h4 class="card-title"><%= location.name %></h4>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Recycle/Upcycle:  <%= location.reupcycle %></li>
+          <li class="list-group-item">Address: <%= location.address1 %>, <%= location.address2 %>, <%= location.city %>, <%= location.state %> <%= location.zip %></li>
+          <li class="list-group-item">Phone Number: <%= location.phone %></li>
+          <li class="list-group-item">Hours: <%= location.hrs %></li>
+        </ul>
+        <div class="card-body">
+          <a href="https://www.watertowndpw.org/169/Trash-Recycling" class="btn btn-success">Visit Website</a>
+          <button type="button" class="btn btn-success" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#detailsModal<%= location.id%>">
+            Details
+          </button>
+        </div>
+        
+        <!-- Details Modal 
+              the modal has to appear in the loop so it can access the location object
+              it also has to have a unique id so we add the locaction.id to the detailsModal id name
+          -->
+          <div class="modal fade" id="detailsModal<%= location.id%>" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="detailsModalLabel"><%= location.name %></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                  <p class="card-text"><%= location.details %></p>
+                  <p class="card-text">Created <%= location.createdAt %></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success">Visit #</button>
+                  <a href="https://www.watertowndpw.org/169/Trash-Recycling" class="btn btn-success">Visit Website</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        
+      </div>
+    </div>
+    
+    <% }) %>
+    <!-- this is where the main loop ends -->
+    
+    
+  </div>
+</div>
+
+<% if (loggedIn) {%>
+  <% if (['rohankelkar@brandeis.edu','tjhickey@brandeis.edu', 'joungwon04@brandeis.edu', 'rahmamalik@brandeis.edu'].includes(user.googleemail)) { %>
+  
+  <div>
+    <h1>Developers only</h1>
+  </div>
+  <pre><%= JSON.stringify(locations,null,5) %></pre>
+
+  <% } %>
+<% } %>
