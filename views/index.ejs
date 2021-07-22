@@ -1,27 +1,27 @@
 <div class="container">
   
-  <script>
-    function showRecycling() {
-      recycling.removeAttribute('style')
-      upcycling.style.display="none"
-    }
-    function showUpcycling() {
-      recycling.style.display="none"
-      upcycling.removeAttribute('style')
-    }
-    function boston() {
-      boston.style.display="block"
-      chicago.style.display="none"
-      houston.style.display="none"
-      islamabad.style.display="none"
-    }
-    function showIslamabadRecycling() {
-      BostonRecycling.setAttribute('style','display:none')
-      BostonUpcycling.setAttribute('style','display:none')
-      IslamabadRecycling.setAttribute('style','height:60vh; display:block')
-      IslamabadUpcycling.setAttribute('style','display:none')
-    }
-
+<script>
+  function showRecycling() {
+    recycling.removeAttribute('style')
+    upcycling.style.display="none"
+  }
+  function showUpcycling() {
+    recycling.style.display="none"
+    upcycling.removeAttribute('style')
+  }
+  function boston() {
+    boston.style.display="block"
+    chicago.style.display="none"
+    houston.style.display="none"
+    islamabad.style.display="none"
+  }
+  function showIslamabadRecycling() {
+    BostonRecycling.setAttribute('style','display:none')
+    BostonUpcycling.setAttribute('style','display:none')
+    IslamabadRecycling.setAttribute('style','height:60vh; display:block')
+    IslamabadUpcycling.setAttribute('style','display:none')
+  }
+    
   </script>
   
   
@@ -35,11 +35,14 @@
 
   <div class="d-flex gy-5 justify-content-center">
     <div class="btn-group" role="group">
-      <button type="button" class="btn btn-outline-success" onclick="boston()">Boston</button>
-      <button type="button" class="btn btn-outline-success" onclick="boston()">Chicago</button>
-      <!-- <button type="button" class="btn btn-outline-success" onclick="showBostonUpcycling()">Chicago</button> -->
-      <!-- <button type="button" class="btn btn-outline-success" onclick="showIslamabadRecycling()">Houston</button> -->
-      <button type="button" class="btn btn-outline-success" onclick="showIslamabadUpcycling()">Islamabad</button>
+      <button type="button" class="btn btn-outline-success" onclick="boston()">Boston Recycling</button>
+      <button type="button" class="btn btn-outline-success" onclick="boston()">Boston Upcycling</button>
+      <button type="button" class="btn btn-outline-success" onclick="boston()">Chicago Recycling</button>
+      <button type="button" class="btn btn-outline-success" onclick="boston()">Chicago Upcycling</button>
+      <button type="button" class="btn btn-outline-success" onclick="boston()">Houston Recycling</button>
+      <button type="button" class="btn btn-outline-success" onclick="boston()">Houston Upcycling</button>
+      <button type="button" class="btn btn-outline-success" onclick="boston()">Islamabad Recycling</button>
+      <button type="button" class="btn btn-outline-success" onclick="boston()">Islamabad Upcycling</button>
     </div>
   </div>
 <!--       
