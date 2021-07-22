@@ -53,12 +53,10 @@ app.get("/locHouston", (req, res) => res.render("locHouston"));
 app.get("/locIslamabad", (req, res) => res.render("locIslamabad"));
 //app.get("/locUser", (req, res) => res.render("locUser"));
 
-
 app.get("/contributions", (req, res) => res.render("contributions"));
-app.get("/map", isLoggedIn, (req, res) => {res.render("maps");
+app.get("/map", isLoggedIn, (req, res) => {
+  res.render("maps");
 });
-
-
 
 const CommentForRahma = require("./models/CommentForRahma");
 
@@ -130,7 +128,7 @@ app.post("/addCommentForRohan", isLoggedIn, async (req, res, next) => {
 
 app.get("/bio/rohan/delete/:commentId", isLoggedIn, async (req, res, next) => {
   try {
-    await Comment.deleteOne({_id:req.params.commentId});
+    await Comment.deleteOne({ _id: req.params.commentId });
     res.redirect("/bio/rohan");
   } catch (e) {
     next(e);
@@ -317,7 +315,7 @@ app.post("/addLocation", isLoggedIn, async (req, res, next) => {
     });
 
     await location.save();
-    res.redirect("/addLocation");
+    res.redirect("/locUser");
   } catch (error) {
     next(error);
   }
@@ -361,7 +359,7 @@ app.get("/feedback/delete", isLoggedIn, async (req, res, next) => {
 
 app.get("/feedback/delete/:feedbackId", isLoggedIn, async (req, res, next) => {
   try {
-    await Feedback.deleteOne({_id:req.params.feedbackId});
+    await Feedback.deleteOne({ _id: req.params.feedbackId });
     res.redirect("/feedback");
   } catch (e) {
     next(e);
