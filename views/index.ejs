@@ -2,22 +2,22 @@
   
 <script>
   function showRecycling() {
-    recycling.removeAttribute('style')
+    recycling.removeAttribute("style")
     upcycling.style.display="none"
   }
   function showUpcycling() {
     recycling.style.display="none"
-    upcycling.removeAttribute('style')
+    upcycling.removeAttribute("style")
   }
   function showBoston() {
-    boston.style.display="block"
+    boston.removeAttribute("style")
     chicago.style.display="none"
     houston.style.display="none"
     islamabad.style.display="none"
   }
   function showChicago() {
     boston.style.display="none"
-    chicago.style.display="block"
+    chicago.removeAttribute("style")
     houston.style.display="none"
     islamabad.style.display="none"
   }
@@ -65,103 +65,63 @@
     <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d378049.5635411197!2d-71.07092025!3d42.24623295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sRecycling%20near%20Boston%2C%20MA!5e0!3m2!1sen!2sus!4v1626869007916!5m2!1sen!2sus" 
             width=100%
             height=1080px
-            style="border: none;"
+            style="border: none; display: none;"
             allow="fullscreen"
             id="boston"
             loading="lazy"></iframe>
     <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d190241.64425501434!2d-87.80090447878686!3d41.838510496558534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srecycling%20near%20chicago!5e0!3m2!1sen!2skr!4v1626989032549!5m2!1sen!2skr"
             width=100%
             height=1080px
-            style="border: none;"
+            style="border: none; display: none;"
             allow="fullscreen"
             id="chicago"
             loading="lazy"></iframe>
     <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d221698.6170281778!2d-95.51562759877918!3d29.74752972521884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srecycling%20near%20houston!5e0!3m2!1sen!2skr!4v1626989146254!5m2!1sen!2skr"
             width=100%
             height=1080px
-            style="border: none;"
+            style="border: none; display: none;"
             allow="fullscreen"
             id="houston"
             loading="lazy"></iframe>
     <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d212704.09297198066!2d72.89697331433884!3d33.59229137287113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srecycling%20near%20islamabad%20pakistan!5e0!3m2!1sen!2sus!4v1626869188850!5m2!1sen!2sus" 
             width=100%
             height=1080px
-            style="border: none;"
+            style="border: none; display: none;"
             allow="fullscreen"
             id="islamabad"
             loading="lazy"></iframe>
   </div>
   <div height="100%" id="upcycling" style="display: none;">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d378049.5635411197!2d-71.07092025!3d42.24623295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1supcycling%20near%20Boston%2C%20MA!5e0!3m2!1sen!2sus!4v1626869007916!5m2!1sen!2sus" 
+    <div id="boston" style="display: none;">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d378049.5635411197!2d-71.07092025!3d42.24623295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1supcycling%20near%20Boston%2C%20MA!5e0!3m2!1sen!2sus!4v1626869007916!5m2!1sen!2sus" 
             width=100%
             height=1080px
             style="border: none;"
             allow="fullscreen"
             id="boston"
             loading="lazy"></iframe>
+    </div>
+    
     <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d190255.33858284508!2d-87.87223817924033!3d41.8339036664897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1supcycling%20near%20chicago!5e0!3m2!1sen!2skr!4v1626989085619!5m2!1sen!2skr"
             width=100%
             height=1080px
-            style="border: none;"
+            style="border: none; display: none;"
             allow="fullscreen"
             id="chicago"
             loading="lazy"></iframe>
     <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d221697.6249252614!2d-95.5156279176333!3d29.74797837230062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1supcycling%20near%20houston!5e0!3m2!1sen!2skr!4v1626989180213!5m2!1sen!2skr"
             width=100%
             height=1080px
-            style="border: none;"
+            style="border: none; display: none;"
             allow="fullscreen"
             id="houston"
             loading="lazy"></iframe>
     <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d212704.09297198066!2d72.89697331433884!3d33.59229137287113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1supcycling%20near%20islamabad%20pakistan!5e0!3m2!1sen!2sus!4v1626869188850!5m2!1sen!2sus" 
             width=100%
             height=1080px
-            style="border: none;"
+            style="border: none; display: none;"
             allow="fullscreen"
             id="islamabad"
             loading="lazy"></iframe>
   </div>
 </div>
-
-      
-</div>
-
-
-  <div class="full recycling" id="IslamabadUpcycling" style="display:none">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d212704.09297198066!2d72.89697331433884!3d33.59229137287113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1supcycling%20near%20islamabad%20pakistan!5e0!3m2!1sen!2sus!4v1626869188850!5m2!1sen!2sus" 
-          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-  </div>
-
-
-<!--
-<div class="row">
-  <div class="col">
-      <h2
-
-</div>
-
-<div class="row">
-  <div class="col">
-      <h2>
-        Islamabad Recycling
-      </h2>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d212704.09297198066!2d72.89697331433884!3d33.59229137287113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srecycling%20near%20islamabad%20pakistan!5e0!3m2!1sen!2sus!4v1626869188850!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-  </div>
-  <div class="col">
-      <h2>
-        Islamabad Upcycling
-      </h2>
-      <iframe src="" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-  </div>
-</div>
-
-
-<h3>
-   or visit Google Maps to find
-  <a href="https://www.google.com/maps/search/Recycling+near+me">recycling</a> or
-
-   <a href="https://www.google.com/maps/search/Upcycling+near+me">upcycling </a>
-  near your current location
-</h3>
-
--->
