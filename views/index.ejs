@@ -10,9 +10,14 @@
   <div class="d-flex gy-5 justify-content-center">
     <div class="row">
       <div class="col">
+        <button onclick="BostonRecycling.setAttribute('display:none')" >
+            Boston!!
+          </button>
         <div class="btn-group" role="group">
         
-          <input type="radio" class="btn-check" name="boston" id="boston" autocomplete="off" value=1>
+          <input type="radio" class="btn-check" name="boston" id="boston" autocomplete="off" 
+                 onclick="console.log('button 2')" value=1>
+          
           
           <label class="btn btn-outline-success" for="btnradio1">Boston</label>
 
@@ -68,7 +73,7 @@
 
 -->
 
-<div class="full recycling"  id="BostonRecycling" style="height:100vh">
+<div class="full recycling"  id="BostonRecycling" style="height:100vh; display:block">
   <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d378049.5635411197!2d-71.07092025!3d42.24623295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sRecycling%20near%20Boston%2C%20MA!5e0!3m2!1sen!2sus!4v1626869007916!5m2!1sen!2sus" 
           width="100%" 
           height="100%" 
