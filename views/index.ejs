@@ -1,9 +1,13 @@
-
 <div class="container">
   
   <script>
     function recycling() {
-      upcycling
+      recycling.removeAttribute('style')
+      upcycling.style.display="none"
+    }
+    function upcycling() {
+      recycling.style.display="none"
+      upcycling.removeAttribute('style')
     }
     
     
@@ -35,16 +39,16 @@
     <div class="row">
       <div class="col">
         <div class="btn-group" role="group">
-          <button type="button" class="btn btn-outline-success" onclick="showBostonRecycling()">Boston Recycling</button>
-          <button type="button" class="btn btn-outline-success" onclick="showBostonUpcycling()">Chicago</button>
-          <button type="button" class="btn btn-outline-success" onclick="showIslamabadRecycling()">Houston</button>
+          <button type="button" class="btn btn-outline-success" onclick="boston()">Boston</button>
+          <!-- <button type="button" class="btn btn-outline-success" onclick="showBostonUpcycling()">Chicago</button> -->
+          <!-- <button type="button" class="btn btn-outline-success" onclick="showIslamabadRecycling()">Houston</button> -->
           <button type="button" class="btn btn-outline-success" onclick="showIslamabadUpcycling()">Islamabad</button>
         </div>
       </div>
       <div class="col">
         <div class="btn-group" role="group">
-          <button type="button" class="btn btn-outline-success" onclick="showBostonRecycling()">Recycling</button>
-          <button type="button" class="btn btn-outline-success" onclick="showBostonUpcycling()">Upcycling</button>
+          <button type="button" class="btn btn-outline-success" onclick="recycling()">Recycling</button>
+          <button type="button" class="btn btn-outline-success" onclick="upcycling()">Upcycling</button>
         </div>
       </div>
     </div>
