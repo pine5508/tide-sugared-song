@@ -21,38 +21,24 @@
     Welcome to Greencycle — Your one-stop handbook to locate all the recycling centers near you!
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
   </div>
+  
+  
 
-  <div class="d-flex gy-5 justify-content-center">
-    <div class="row">
+      
+  
+  <div class="d-flex gy-5 justify-content-center" >
+    <div class="row" style="display:none">
       <div class="col">
-        <button onclick="showBostonRecycling()" >
-            Boston Recycling
-          </button>
-        <button onclick="showIslamabadRecycling()" >
-            Islamabad Recycling
-          </button>
         <div class="btn-group" role="group">
-        
-          <input type="radio" class="btn-check" name="boston" id="boston" autocomplete="off" 
-                 onclick="console.log('button 2')" value=1>
-          
-          
-          <label class="btn btn-outline-success" for="btnradio1">Boston</label>
-
-          <input type="radio" class="btn-check" name="chicago" id="chicago" autocomplete="off" value=2>
-          <label class="btn btn-outline-success" for="btnradio2">Chicago</label>
-
-          <input type="radio" class="btn-check" name="houston" id="houston" autocomplete="off" value=3>
-          <label class="btn btn-outline-success" for="btnradio3">Houston</label>
-
-          <input type="radio" class="btn-check" name="islamabad" id="islamabad" autocomplete="off" value=4>
-          <label class="btn btn-outline-success" for="btnradio3">Islamabad</label>
-        
+          <button type="button" class="btn btn-outline-success" onclick="showBostonRecycling()">Boston Recycling</button>
+          <button type="button" class="btn btn-outline-success" onclick="showBostonUpcycling()">Boston Upcycling</button>
+          <button type="button" class="btn btn-outline-success" onclick="showIslamabadRecycling()">Islamabad Recycling</button>
+          <button type="button" class="btn btn-outline-success" onclick="showIslamabadUpcycling()">Islamabad Upcycling</button>
         </div>
       </div>
+    </div>
      
-      
-      </body>
+    
       <div class="col">
         <div class="btn-group" role="group">
           <input type="radio" class="btn-check" name="recycle" id="recycle" autocomplete="off" checked>
@@ -65,7 +51,9 @@
       <div class="col">
         <button type="button" class="btn btn-success">Details</button>
       </div>
+      
     </div>
+    
   </div>
 </div>
 
