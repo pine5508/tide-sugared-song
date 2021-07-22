@@ -7,7 +7,9 @@
     <div class="row">
       <div class="col">
         <div class="btn-group" role="group">
-          <input type="radio" class="btn-check" name="boston" id="boston" autocomplete="off" >
+          <form action="">
+          <input type="radio" class="btn-check" name="boston" id="boston" autocomplete="off"  <%= user.boston? 'checked' : '' %> >
+          
           <label class="btn btn-outline-success" for="btnradio1">Boston</label>
 
           <input type="radio" class="btn-check" name="chicago" id="chicago" autocomplete="off" >
@@ -18,6 +20,7 @@
 
           <input type="radio" class="btn-check" name="islamabad" id="islamabad" autocomplete="off">
           <label class="btn btn-outline-success" for="btnradio3">Islamabad</label>
+          </form>
         </div>
       </div>
       <div class="col">
