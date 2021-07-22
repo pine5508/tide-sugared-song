@@ -270,7 +270,6 @@ app.get("/bio/gerardo", (req, res) => res.render("bioGerardo"));
 
 const Location = require("./models/Location"); // this is the schema for Locations
 
-//app.get('/locationForm', (req,res)=>res.render('Location'));
 
 //we have to find all of the most recent comments to show them on the bio page
 
@@ -408,58 +407,6 @@ app.post("/alanMadlib", isLoggedIn, (req, res) => {
   res.render("madlibAlan");
 });
 
-/* ********************** RECIPE API interactions ************/
-
-// this shows how to use an API to get recipes
-// http://www.recipepuppy.com/about/api/
-// the example here finds omelet recipes with onions and garlic
-app.get("/recipe/json/:ingredient", async (req, res, next) => {
-  try {
-    const url =
-      "https://www.themealdb.com/api/json/v1/1/filter.php?i=" +
-      req.params.ingredient;
-    //const url = "https://www.themealdb.com/api/json/v1/1/search.php?i="+meal //http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3"
-    const results = await axios.get(url);
-    res.json(results.data);
-  } catch (error) {
-    next(error);
-  }
-});
-
-// this gets the data from the API and then rendeers it in an ejs page
-app.get("/recipe/:ingredient", async (req, res, next) => {
-  try {
-    const url =
-      "https://www.themealdb.com/api/json/v1/1/filter.php?i=" +
-      req.params.ingredient;
-    //const url = "https://www.themealdb.com/api/json/v1/1/search.php?i="+meal //http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3"
-
-    let results = await axios.get(url);
-    res.locals.meals = results.data.meals || [];
-    res.locals.ingredient = req.params.ingredient;
-    res.render("recipes");
-  } catch (error) {
-    next(error);
-  }
-});
-
-app.get("/recipeById/:mealId", async (req, res, next) => {
-  try {
-    const mealId = req.params.mealId;
-    const url =
-      "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + mealId;
-    //"https://www.themealdb.com/api/json/v1/1/search.php?i="+mealId
-
-    let results = await axios.get(url);
-
-    res.locals.data = results.data.meals[0] || [];
-    res.locals.ingredient = req.params.ingredient;
-    //res.json(res.locals.data)
-    res.render("recipe");
-  } catch (error) {
-    next(error);
-  }
-});
 
 app.get("/profiles", isLoggedIn, async (req, res, next) => {
   try {
@@ -481,11 +428,6 @@ app.use("/publicprofile/:userId", async (req, res, next) => {
   }
 });
 
-// app.get('/profile',
-//     isLoggedIn,
-//     (req,res) => {
-//       res.render('profile')
-//     })
 
 app.get("/profile", isLoggedIn, (req, res) => res.render("profile"));
 
@@ -502,55 +444,7 @@ app.post("/editYourProfile", isLoggedIn, async (req, res, next) => {
   }
 });
 
-/* ********************************************************/
 
-// get the value associated to the key
-app.get("/todo", isLoggedIn, async (req, res, next) => {
-  try {
-    res.locals.items = await ToDoItem.find({ userId: req.user._id });
-    res.render("toDoList");
-  } catch (e) {
-    next(e);
-  }
-});
-
-/* add the value in the body to the list associated to the key */
-app.post("/todo", isLoggedIn, async (req, res, next) => {
-  try {
-    const todo = new ToDoItem({
-      item: req.body.item,
-      createdAt: new Date(),
-      completed: false,
-      userId: req.user._id
-    });
-    await todo.save();
-    res.redirect("/todo");
-  } catch (e) {
-    next(e);
-  }
-});
-
-app.get("/todo/remove/:itemId", isLoggedIn, async (req, res, next) => {
-  try {
-    console.log("inside /todo/remove/:itemId");
-    await ToDoItem.remove({ _id: req.params.itemId });
-    res.redirect("/todo");
-  } catch (e) {
-    next(e);
-  }
-});
-
-app.get("/todo/switchComplete/:itemId", isLoggedIn, async (req, res, next) => {
-  try {
-    console.log("inside /todo/switchComplete/:itemId");
-    const todo = await ToDoItem.findOne({ _id: req.params.itemId });
-    todo.completed = !todo.completed;
-    await todo.save();
-    res.redirect("/todo");
-  } catch (e) {
-    next(e);
-  }
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
