@@ -2,7 +2,12 @@
 <div class="container">
   
   <script>
-    function showBostonRecycling() {
+    function recycling() {
+      upcycling
+    }
+    
+    
+    function boston() {
       BostonRecycling.setAttribute('style','height:60vh; display:block')
       BostonUpcycling.setAttribute('style','display:none')
       IslamabadRecycling.setAttribute('style','display:none')
@@ -31,35 +36,55 @@
       <div class="col">
         <div class="btn-group" role="group">
           <button type="button" class="btn btn-outline-success" onclick="showBostonRecycling()">Boston Recycling</button>
-          <button type="button" class="btn btn-outline-success" onclick="showBostonUpcycling()">Boston Upcycling</button>
-          <button type="button" class="btn btn-outline-success" onclick="showIslamabadRecycling()">Islamabad Recycling</button>
-          <button type="button" class="btn btn-outline-success" onclick="showIslamabadUpcycling()">Islamabad Upcycling</button>
+          <button type="button" class="btn btn-outline-success" onclick="showBostonUpcycling()">Chicago</button>
+          <button type="button" class="btn btn-outline-success" onclick="showIslamabadRecycling()">Houston</button>
+          <button type="button" class="btn btn-outline-success" onclick="showIslamabadUpcycling()">Islamabad</button>
+        </div>
+      </div>
+      <div class="col">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-outline-success" onclick="showBostonRecycling()">Recycling</button>
+          <button type="button" class="btn btn-outline-success" onclick="showBostonUpcycling()">Upcycling</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<div class="full">
+  <div class="recycling" id="recycling">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d378049.5635411197!2d-71.07092025!3d42.24623295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sRecycling%20near%20Boston%2C%20MA!5e0!3m2!1sen!2sus!4v1626869007916!5m2!1sen!2sus" 
+            width="100%" 
+            height="100%" 
+            style="border: none;"
+            allow="fullscreen"
+            id="boston"
+            loading="lazy"></iframe>
+  </div>
+  <div class="recycling" id="recycling" style="display: none;">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d212704.09297198066!2d72.89697331433884!3d33.59229137287113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srecycling%20near%20islamabad%20pakistan!5e0!3m2!1sen!2sus!4v1626869188850!5m2!1sen!2sus" 
+            width="100%"
+            height="100%"
+            style="border: none;"
+            allow="fullscreen"
+            id="islamabad"
+            loading="lazy"></iframe>
+  </div>
+  <div class="upcycling" style="display: none;">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d378049.5635411197!2d-71.07092025!3d42.24623295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1supcycling%20near%20Boston%2C%20MA!5e0!3m2!1sen!2sus!4v1626869007916!5m2!1sen!2sus" 
+            width="100%" 
+            height="100%" 
+            style="border: none;"
+            allow="fullscreen"
+            loading="lazy"></iframe>
+  </div>
+</div>
 
-<div class="full recycling"  id="BostonRecycling" style="height:100vh; display:block">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d378049.5635411197!2d-71.07092025!3d42.24623295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sRecycling%20near%20Boston%2C%20MA!5e0!3m2!1sen!2sus!4v1626869007916!5m2!1sen!2sus" 
-          width="100%" 
-          height="100%" 
-          style="border: none;"
-          allow="fullscreen"
-          loading="lazy"></iframe>
+      
 </div>
-<div class="full upcycling" id="BostonUpcycling" style="display:none">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d378049.5635411197!2d-71.07092025!3d42.24623295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1supcycling%20near%20Boston%2C%20MA!5e0!3m2!1sen!2sus!4v1626869007916!5m2!1sen!2sus" 
-              width="100%" 
-              height="100%" 
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy"></iframe>      
-</div>
+
 <div class="full recycling" id="IslamabadRecycling" style="display:none">
-   <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d212704.09297198066!2d72.89697331433884!3d33.59229137287113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srecycling%20near%20islamabad%20pakistan!5e0!3m2!1sen!2sus!4v1626869188850!5m2!1sen!2sus" 
-           width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+   
   </div>
 
   <div class="full recycling" id="IslamabadUpcycling" style="display:none">
@@ -67,30 +92,11 @@
           width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
   </div>
 
+
 <!--
 <div class="row">
   <div class="col">
-      <h2>
-        Boston Recycling
-      </h2>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d378049.5635411197!2d-71.07092025!3d42.24623295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sRecycling%20near%20Boston%2C%20MA!5e0!3m2!1sen!2sus!4v1626869007916!5m2!1sen!2sus" 
-              width="600" 
-              height="450" 
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy"></iframe>      
-  </div>
-  <div class="col">
-    <h2>
-      Boston Upcycling
-    </h2>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d378049.5635411197!2d-71.07092025!3d42.24623295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1supcycling%20near%20Boston%2C%20MA!5e0!3m2!1sen!2sus!4v1626869007916!5m2!1sen!2sus" 
-            width="600" 
-            height="450" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy"></iframe>      
-  </div>
+      <h2
 
 </div>
 
