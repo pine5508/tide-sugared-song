@@ -1,39 +1,50 @@
 <div class="container">
   
 <script>
-  function showRecycling() {
-    recycling.removeAttribute("style")
-    upcycling.style.display="none"
+  function BRe() {
+    BR.removeAttribute("style")
+    BU.style.display="none"
   }
-  function showUpcycling() {
+  function BUp() {
     recycling.style.display="none"
     upcycling.removeAttribute("style")
   }
-  function showBoston() {
+  function CRe() {
     boston.removeAttribute("style")
     chicago.style.display="none"
     houston.style.display="none"
     islamabad.style.display="none"
   }
-  function showChicago() {
+  function CUp() {
     boston.style.display="none"
     chicago.removeAttribute("style")
     houston.style.display="none"
     islamabad.style.display="none"
   }
-  function showHouston() {
+  function HRe() {
     boston.style.display="none"
     chicago.style.display="none"
     houston.style.display="block"
     islamabad.style.display="none"
   }
-  function showIslamabad() {
+  function HUp() {
     boston.style.display="none"
     chicago.style.display="none"
     houston.style.display="none"
     islamabad.style.display="block"
   }
-    
+  function IRe() {
+    boston.style.display="none"
+    chicago.style.display="none"
+    houston.style.display="block"
+    islamabad.style.display="none"
+  }
+  function IUp() {
+    boston.style.display="none"
+    chicago.style.display="none"
+    houston.style.display="none"
+    islamabad.style.display="block"
+  }
   </script>
   
   
@@ -47,42 +58,41 @@
 
   <div class="d-flex gy-5 justify-content-center">
     <div class="btn-group" role="group">
-      <button type="button" class="btn btn-outline-success" onclick="showBoston(); showRecycling();">Boston Recycling</button>
-      <button type="button" class="btn btn-outline-success" onclick="showBoston(); showUpcycling();">Boston Upcycling</button>
-      <button type="button" class="btn btn-outline-success" onclick="boston()">Chicago Recycling</button>
-      <button type="button" class="btn btn-outline-success" onclick="boston()">Chicago Upcycling</button>
-      <button type="button" class="btn btn-outline-success" onclick="boston()">Houston Recycling</button>
-      <button type="button" class="btn btn-outline-success" onclick="boston()">Houston Upcycling</button>
-      <button type="button" class="btn btn-outline-success" onclick="boston()">Islamabad Recycling</button>
-      <button type="button" class="btn btn-outline-success" onclick="boston()">Islamabad Upcycling</button>
+      <button type="button" class="btn btn-outline-success" onclick="BRe()">Boston Recycling</button>
+      <button type="button" class="btn btn-outline-success" onclick="BUp()">Boston Upcycling</button>
+      <button type="button" class="btn btn-outline-success" onclick="CRe()">Chicago Recycling</button>
+      <button type="button" class="btn btn-outline-success" onclick="CUp()">Chicago Upcycling</button>
+      <button type="button" class="btn btn-outline-success" onclick="HRe()">Houston Recycling</button>
+      <button type="button" class="btn btn-outline-success" onclick="HUp()">Houston Upcycling</button>
+      <button type="button" class="btn btn-outline-success" onclick="IRe()">Islamabad Recycling</button>
+      <button type="button" class="btn btn-outline-success" onclick="IUp()">Islamabad Upcycling</button>
     </div>
   </div>
 </div>
 
 
-<div>
-  <div height="100%" id="recycling" style="display: none;">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d378049.5635411197!2d-71.07092025!3d42.24623295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sRecycling%20near%20Boston%2C%20MA!5e0!3m2!1sen!2sus!4v1626869007916!5m2!1sen!2sus" 
-            width=100%
-            height=1080px
-            style="border: none; display: none;"
-            allow="fullscreen"
-            id="boston"
-            loading="lazy"></iframe>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d190241.64425501434!2d-87.80090447878686!3d41.838510496558534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srecycling%20near%20chicago!5e0!3m2!1sen!2skr!4v1626989032549!5m2!1sen!2skr"
-            width=100%
-            height=1080px
-            style="border: none; display: none;"
-            allow="fullscreen"
-            id="chicago"
-            loading="lazy"></iframe>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d221698.6170281778!2d-95.51562759877918!3d29.74752972521884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srecycling%20near%20houston!5e0!3m2!1sen!2skr!4v1626989146254!5m2!1sen!2skr"
-            width=100%
-            height=1080px
-            style="border: none; display: none;"
-            allow="fullscreen"
-            id="houston"
-            loading="lazy"></iframe>
+<div height="100%">
+ <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d378049.5635411197!2d-71.07092025!3d42.24623295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sRecycling%20near%20Boston%2C%20MA!5e0!3m2!1sen!2sus!4v1626869007916!5m2!1sen!2sus" 
+         width=100%
+         height=1080px
+         style="border: none; display: none;"
+         allow="fullscreen"
+         id="BU"
+         loading="lazy"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d190241.64425501434!2d-87.80090447878686!3d41.838510496558534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srecycling%20near%20chicago!5e0!3m2!1sen!2skr!4v1626989032549!5m2!1sen!2skr"
+        width=100%
+        height=1080px
+        style="border: none; display: none;"
+        allow="fullscreen"
+        id="chicago"
+        loading="lazy"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d221698.6170281778!2d-95.51562759877918!3d29.74752972521884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srecycling%20near%20houston!5e0!3m2!1sen!2skr!4v1626989146254!5m2!1sen!2skr"
+        width=100%
+        height=1080px
+        style="border: none; display: none;"
+        allow="fullscreen"
+        id="houston"
+        loading="lazy"></iframe>
     <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d212704.09297198066!2d72.89697331433884!3d33.59229137287113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srecycling%20near%20islamabad%20pakistan!5e0!3m2!1sen!2sus!4v1626869188850!5m2!1sen!2sus" 
             width=100%
             height=1080px
@@ -101,7 +111,6 @@
             id="boston"
             loading="lazy"></iframe>
     </div>
-    
     <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d190255.33858284508!2d-87.87223817924033!3d41.8339036664897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1supcycling%20near%20chicago!5e0!3m2!1sen!2skr!4v1626989085619!5m2!1sen!2skr"
             width=100%
             height=1080px
